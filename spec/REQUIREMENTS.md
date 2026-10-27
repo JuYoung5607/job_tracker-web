@@ -12,7 +12,7 @@
 
 ### FR-02 넓은 수집
 
-Planner는 SearchConditions와 SearchBudget을 사용해 네 채용 플랫폼의 현재 목록 조회 예산을 배분한다. 플랫폼별 수집기는 실제 출처 URL만 Candidate로 반환하고 검색어·track·발견 시각을 기록한다. PreferenceProfile의 부정 가중치 때문에 명시적 검색 범위를 줄이지 않는다. 최대 호출·후보·시간 예산을 지킨다. 목록 URL은 상세 공고로 바로 저장하지 않는다.
+Searcher는 SearchConditions와 SearchBudget을 사용해 네 채용 플랫폼의 현재 목록 조회 예산을 배분한다. 플랫폼별 수집기는 실제 출처 URL만 Candidate로 반환하고 검색어·track·발견 시각을 기록한다. PreferenceProfile의 부정 가중치 때문에 명시적 검색 범위를 줄이지 않는다. 최대 호출·후보·시간 예산을 지킨다. 목록 URL은 상세 공고로 바로 저장하지 않는다.
 
 ### FR-03 후보 처리
 

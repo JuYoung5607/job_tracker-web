@@ -27,7 +27,7 @@
 ```text
 [공통 수집]
 웹의 새 공고 찾기 요청 → 실행 ID·상태 조회
-SearchConditions → Planner(채용 목록 수집) → Candidate Iterator
+SearchConditions → Searcher(채용 목록 수집) → Candidate Iterator
  → Navigator → Extractor → Company Enricher → Verifier
  → Lifecycle → Job Persister → Job DB
 

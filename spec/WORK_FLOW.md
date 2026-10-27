@@ -9,7 +9,7 @@
 사용자가 웹에서 `새 공고 찾기`를 요청하면 저장된 SearchConditions로 새 실행을 시작한다. 요청에는 실행 ID를 즉시 반환하고, 화면은 실행 상태와 발견·중복·검증·노출·실패 건수를 별도로 조회한다. 동일 사용자의 중복 실행과 검색 예산 초과를 막는다. 피드백 여부는 실행 완료 조건이 아니다.
 
 ```text
-START → Planner(채용 목록 수집) → Candidate Iterator
+START → Searcher(채용 목록 수집) → Candidate Iterator
                          ↓ (후보마다 순차 처리)
 Navigator → Extractor → Company Enricher → Verifier
   → Lifecycle → Job Persister → 다음 후보
@@ -17,7 +17,7 @@ Navigator → Extractor → Company Enricher → Verifier
                        END (수집 실행 완료)
 ```
 
-- Planner: 잡코리아·인크루트·사람인·점핏의 현재 채용 목록에 호출 예산을 배분하고 URL 후보를 합친다. LLM 계획·OpenAI 웹 검색은 사용하지 않는다.
+- Searcher: 잡코리아·인크루트·사람인·점핏의 현재 채용 목록에 호출 예산을 배분하고 URL 후보를 합친다. LLM 계획·OpenAI 웹 검색은 사용하지 않는다.
 - Candidate Iterator: 후보 목록을 큐처럼 사용해 하나씩 선택하고, 처리 완료 후 커서를 전진시킨다.
 - Navigator: 접근 가능 여부와 원문을 확보한다. 목록/종류 불명 페이지에서는 상세 공고 URL을 발견해 새 후보로 반환한다.
 - Extractor: 구조화된 초안과 필드별 Evidence를 만든다.
@@ -40,7 +40,7 @@ Iterator: candidates[candidate_cursor] 선택
 cursor >= len(candidates) → 종료
 ```
 
-`candidate_cursor`의 초기값은 0이다. 선택만으로 커서를 증가시키지 않고, 상세 공고 저장·목록 확장·후보별 실패 등 해당 후보의 처리가 끝났을 때 증가시킨다. 다음 후보를 선택하기 전에 문서·초안·근거·검증 결과 등 후보별 State를 초기화한다. 목록에서 발견한 상세 URL은 출처 목록 URL과 확장 깊이를 기록해 큐 뒤에 추가한다. 목록에서 또 다른 목록을 따라가는 재귀 확장은 MVP에서 허용하지 않는다. URL 중복 제거 및 확장 후를 포함한 전체 고유 후보 수는 `SearchBudget.max_candidates`를 넘지 않는다. Planner와 Iterator는 함께 이 상한을 지킨다.
+`candidate_cursor`의 초기값은 0이다. 선택만으로 커서를 증가시키지 않고, 상세 공고 저장·목록 확장·후보별 실패 등 해당 후보의 처리가 끝났을 때 증가시킨다. 다음 후보를 선택하기 전에 문서·초안·근거·검증 결과 등 후보별 State를 초기화한다. 목록에서 발견한 상세 URL은 출처 목록 URL과 확장 깊이를 기록해 큐 뒤에 추가한다. 목록에서 또 다른 목록을 따라가는 재귀 확장은 MVP에서 허용하지 않는다. URL 중복 제거 및 확장 후를 포함한 전체 고유 후보 수는 `SearchBudget.max_candidates`를 넘지 않는다. Searcher와 Iterator는 함께 이 상한을 지킨다.
 
 ## 2. 사용자별 피드 생성
 

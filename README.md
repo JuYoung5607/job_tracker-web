@@ -106,7 +106,7 @@ cd C:\dev\job-tracker-web
 
 ## 현재 채용 목록 수집
 
-웹 검색과 `python run.py`는 모두 Planner 노드를 통해 통합 Searcher를 호출합니다.
+웹 검색과 `python run.py`는 모두 Searcher 노드에서 수집을 시작합니다.
 Searcher는 JobKorea·Incruit·Saramin의 현재 채용 목록과 Jumpit 포지션 목록을 하나의
 검색 예산으로 조회하고, 중복을 제거해 실제 공고 URL 후보를 합칩니다. 수집한 후보는
 Navigator → Extractor → Verifier 경로로 처리하며, Extractor의 LLM 호출은
@@ -136,7 +136,7 @@ C:\dev\job_tracker\.venv\Scripts\python.exe -X utf8 -m backend.reverify_saved_jo
 
 실행을 결정한 뒤 `--limit 1 --apply`처럼 최대 처리 건수를 명시하고,
 필요하면 `--env-file C:\dev\job_tracker\.env`를 붙입니다. 각 공고의 현재 원문을
-다시 가져오고 Extractor를 최대 한 번 호출합니다. 목록 Planner와 기업 웹 검색은
+다시 가져오고 Extractor를 최대 한 번 호출합니다. 목록 Searcher와 기업 웹 검색은
 사용하지 않습니다. Verifier 결과는 사용자별로 저장하고 해당 계정의 피드를 갱신합니다.
 페이지 접근이나 추출에 실패한 공고는 적합 판정으로 올리지 않습니다.
 재검증한 공고를 다시 확인하려면 `--include-processed`를 추가합니다.

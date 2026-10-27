@@ -14,7 +14,6 @@ from nodes.job_store import job_store
 from nodes.lifecycle_node import lifecycle_node
 from nodes.navigator_node import make_navigator_node
 from nodes.page_fetcher import make_page_fetcher
-from nodes.planner_node import make_planner_node
 from nodes.ranker_node import make_ranker_node
 from nodes.verifier_node import verifier_node
 from state import State
@@ -40,27 +39,25 @@ def route_after_extractor(state: State) -> str:
 
 fetch_page = make_page_fetcher()
 navigator_node = make_navigator_node(fetch_page)
-planner_node = make_planner_node(
-    make_searcher_node(
-        make_html_listing_collector(fetch_page),
-        make_jumpit_searcher_node(make_jumpit_position_fetcher(), broad_first=True),
-    ),
+searcher_node = make_searcher_node(
+    make_html_listing_collector(fetch_page),
+    make_jumpit_searcher_node(make_jumpit_position_fetcher(), broad_first=True),
 )
+
+
 def build_workflow(*, store=None, user_scoped_screening: bool = False,
                    on_external_start: Callable[[], None] | None = None):
     if on_external_start is not None:
         run_fetch_page = make_page_fetcher(on_request_start=on_external_start)
         run_navigator = make_navigator_node(run_fetch_page)
         run_jumpit_fetcher = make_jumpit_position_fetcher(on_request_start=on_external_start)
-        run_planner = make_planner_node(
-            make_searcher_node(
-                make_html_listing_collector(run_fetch_page),
-                make_jumpit_searcher_node(run_jumpit_fetcher, broad_first=True),
-            ),
+        run_searcher = make_searcher_node(
+            make_html_listing_collector(run_fetch_page),
+            make_jumpit_searcher_node(run_jumpit_fetcher, broad_first=True),
         )
     else:
         run_navigator = navigator_node
-        run_planner = planner_node
+        run_searcher = searcher_node
     workflow = StateGraph(State)
     workflow.add_node("candidate_iterator_node", trace_node("candidate_iterator_node", candidate_iterator_node))
     lookup = make_existing_job_lookup_node(store) if store is not None else existing_job_lookup_node
@@ -80,9 +77,9 @@ def build_workflow(*, store=None, user_scoped_screening: bool = False,
     workflow.add_node("lifecycle_node", trace_node("lifecycle_node", lifecycle_node))
     workflow.add_node("job_persister_node", trace_node("job_persister_node", persister))
 
-    workflow.add_node("planner_node", trace_node("planner_node", run_planner))
-    workflow.add_edge(START, "planner_node")
-    workflow.add_edge("planner_node", "candidate_iterator_node")
+    workflow.add_node("searcher_node", trace_node("searcher_node", run_searcher))
+    workflow.add_edge(START, "searcher_node")
+    workflow.add_edge("searcher_node", "candidate_iterator_node")
 
     workflow.add_conditional_edges(
         "candidate_iterator_node", route_after_iterator,

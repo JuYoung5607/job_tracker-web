@@ -135,7 +135,7 @@ class ApiTest(unittest.TestCase):
 
         class EmptyGraph:
             def stream(self, *_args, **_kwargs):
-                yield {"planner_node": {"candidates": []}}
+                yield {"searcher_node": {"candidates": []}}
                 yield {"verifier_node": {"screening_result": ScreeningResult(
                     candidate_id="candidate-test",
                     source_url="https://www.jobkorea.co.kr/Recruit/GI_Read/99999999",
@@ -200,7 +200,7 @@ class ApiTest(unittest.TestCase):
 
         class EmptyGraph:
             def stream(self, *_args, **_kwargs):
-                yield {"planner_node": {"candidates": []}}
+                yield {"searcher_node": {"candidates": []}}
 
         def refresh(_user_id):
             save_feed(["old-job", "new-job"])

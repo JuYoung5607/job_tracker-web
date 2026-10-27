@@ -80,7 +80,7 @@ for event in app.stream(
 
         candidates = update.get("candidates", [])
 
-        if node_name == "planner_node":
+        if node_name == "searcher_node":
             print("아래는 검증 전 URL 후보이며, 추천 공고가 아닙니다.")
             for index, candidate in enumerate(update.get("candidates", []), start=1):
                 print(f"\n--- candidate {index} ---")

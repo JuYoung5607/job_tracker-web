@@ -1,4 +1,4 @@
-"""Recheck imported feed URLs without running the collection Planner.
+"""Recheck imported feed URLs without running the collection Searcher.
 
 Preview is read-only. --apply fetches each selected source page and invokes the
 Extractor once per accessible posting. Results are scoped to one user because
@@ -191,7 +191,7 @@ def main() -> None:
     )
     chosen = jobs[:args.limit] if args.limit else jobs
     print(f"계정: {user_id}; 대상: {len(chosen)}건 / 대기: {len(jobs)}건")
-    print("예상 Extractor LLM 호출: 최대", len(chosen), "회; 목록 Planner·기업 웹 검색: 0회")
+    print("예상 Extractor LLM 호출: 최대", len(chosen), "회; 목록 Searcher·기업 웹 검색: 0회")
     for job in chosen:
         print(f"- {job.company_name} | {job.job_title} | {job.source_url}")
     if not args.apply:
