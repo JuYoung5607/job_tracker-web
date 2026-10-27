@@ -11,7 +11,7 @@ trace_path = Path(os.getenv("JOB_TRACKER_TRACE_FILE") or (
 ))
 os.environ["JOB_TRACKER_TRACE_FILE"] = str(trace_path)
 
-from graph import app, jumpit_app, listing_app, personalization_app
+from graph import app, personalization_app
 from run_metrics import RunMetrics
 from schemas.search import (
     ExperienceLevel,
@@ -66,14 +66,10 @@ initial_state = {
 
 screening_results = []
 metrics = RunMetrics()
-discovery_mode = os.getenv("JOB_TRACKER_DISCOVERY", "web_search")
-if discovery_mode not in {"web_search", "listing", "jumpit"}:
-    raise ValueError("JOB_TRACKER_DISCOVERY는 web_search, listing 또는 jumpit이어야 합니다.")
-selected_app = {"web_search": app, "listing": listing_app, "jumpit": jumpit_app}[discovery_mode]
-print(f"[Run] 후보 발견 방식: {discovery_mode}")
+print("[Run] 후보 발견 방식: 채용 플랫폼 현재 목록")
 print(f"[Run] 원문·추출 과정 로그: {trace_path}")
 
-for event in selected_app.stream(
+for event in app.stream(
     initial_state,
     config={"recursion_limit": max(100, initial_state["search_budget"].max_candidates * 8 + 20)},
     stream_mode="updates",
@@ -82,18 +78,9 @@ for event in selected_app.stream(
         metrics.observe(node_name, update)
         print(f"\n===== {node_name} =====")
 
-        search_plan = update.get("search_plan")
-
-        if search_plan is not None:
-            print(
-                search_plan.model_dump_json(
-                    indent=2,
-                )
-            )
-
         candidates = update.get("candidates", [])
 
-        if node_name in {"searcher_node", "listing_searcher_node", "jumpit_searcher_node"}:
+        if node_name == "planner_node":
             print("아래는 검증 전 URL 후보이며, 추천 공고가 아닙니다.")
             for index, candidate in enumerate(update.get("candidates", []), start=1):
                 print(f"\n--- candidate {index} ---")

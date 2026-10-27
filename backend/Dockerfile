@@ -9,6 +9,6 @@ RUN pip install --no-cache-dir -r backend/requirements.txt
 COPY backend ./backend
 COPY nodes ./nodes
 COPY schemas ./schemas
-COPY state.py personalization_state.py ./
+COPY state.py personalization_state.py graph.py node_trace.py ./
 ENV PYTHONPATH=/app:/app/backend
 CMD ["uvicorn", "backend.app.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers"]

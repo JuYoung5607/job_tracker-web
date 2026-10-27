@@ -23,13 +23,3 @@ class SearchBudget(BaseModel):
     max_candidates: int = Field(default=30, ge=1, le=500)
     timeout_seconds: int = Field(default=300, ge=30)
 
-class SearchQuery(BaseModel):
-    query: str = Field(min_length=1)
-    search_track: str = Field(min_length=1)
-    allowed_domains: list[str] = Field(default_factory=list)
-
-class SearchPlan(BaseModel):
-    search_tracks: list[str] = Field(min_length=1)
-    queries: list[SearchQuery] = Field(min_length=1)
-    target_companies: list[str] = Field(default_factory=list)
-    stop_conditions: list[str] = Field(default_factory=list)

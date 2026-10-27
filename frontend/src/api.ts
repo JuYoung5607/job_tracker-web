@@ -12,7 +12,9 @@ export type Job = {
   experience_level: string | null;
   employment_type: string | null;
   recruiting_status: string;
+  opened_at: string | null;
   closes_at: string | null;
+  is_new: boolean;
   score: number;
   reasons: string[];
   screening_decision: "eligible" | "review";
@@ -21,6 +23,29 @@ export type Job = {
 };
 
 export type Feed = { version: number; generated_at: string | null; items: Job[] };
+
+export type SearchRun = {
+  run_id: string;
+  status: "queued" | "running" | "completed" | "failed" | "interrupted";
+  phase: string;
+  discovered_count: number;
+  processed_count: number;
+  eligible_count: number;
+  review_count: number;
+  excluded_count: number;
+  failed_count: number;
+  visible_count: number | null;
+  error_message: string | null;
+  started_at: string;
+  finished_at: string | null;
+};
+
+export type SearchQuota = {
+  daily_limit: number;
+  remaining: number;
+  next_available_at: string | null;
+  timezone: "Asia/Seoul";
+};
 
 export type SourceStat = {
   source_name: string;
@@ -62,6 +87,9 @@ export const api = {
     request<User>("/api/auth/login", { method: "POST", body: JSON.stringify({ email, password }) }),
   logout: () => request<void>("/api/auth/logout", { method: "POST" }),
   jobs: () => request<Feed>("/api/jobs"),
+  startSearch: () => request<SearchRun>("/api/search-runs", { method: "POST" }),
+  latestSearch: () => request<{ run: SearchRun | null }>("/api/search-runs/latest"),
+  searchQuota: () => request<SearchQuota>("/api/search-runs/quota"),
   sourceStats: () => request<SourceStat[]>("/api/source-stats"),
   searchConditions: async () => {
     const response = await fetch("/api/me/search-conditions", { credentials: "include" });
@@ -73,10 +101,10 @@ export const api = {
     request<{ conditions: SearchConditions; visible_job_count: number }>(
       "/api/me/search-conditions", { method: "PUT", body: JSON.stringify(conditions) }
     ),
-  feedback: (jobId: string, decision: FeedbackDecision) =>
-    request(`/api/jobs/${jobId}/feedback`, {
+  feedback: (jobId: string, decision: FeedbackDecision, reasons: string[]) =>
+    request<{ preference_profile_version: number; visible_job_count: number }>(`/api/jobs/${jobId}/feedback`, {
       method: "PUT",
-      body: JSON.stringify({ decision, reasons: [], comment: null })
+      body: JSON.stringify({ decision, reasons, comment: null })
     }),
   correction: (payload: { job_id: string; source_url: string; request_type: string; message: string }) =>
     request("/api/correction-requests", { method: "POST", body: JSON.stringify(payload) })

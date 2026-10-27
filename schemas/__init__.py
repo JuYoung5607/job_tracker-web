@@ -23,7 +23,6 @@ from schemas.profile import (
 from schemas.search import (
     SearchBudget,
     SearchConditions,
-    SearchPlan,
 )
 from schemas.screening import ExtractedClaim, ExtractedPostingFacts, ScreeningDecision, ScreeningResult
 from schemas.verification import (
@@ -51,7 +50,6 @@ __all__ = [
     "PublishResult",
     "SearchBudget",
     "SearchConditions",
-    "SearchPlan",
     "ExtractedClaim",
     "ExtractedPostingFacts",
     "ScreeningDecision",

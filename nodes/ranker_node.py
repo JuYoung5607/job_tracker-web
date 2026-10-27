@@ -4,7 +4,7 @@ import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
 
-from nodes.job_persister_node import SQLiteJobStore
+from nodes.job_store import SQLiteJobStore
 from personalization_state import PersonalizationState
 from schemas.candidate import JobPosting
 from schemas.lifecycle import LifecycleStatus
@@ -15,6 +15,21 @@ from schemas.search import ExperienceLevel, SearchConditions
 
 
 VISIBLE_STATUSES = {LifecycleStatus.ACTIVE, LifecycleStatus.CHANGED}
+ROLE_TERMS = {
+    "engineer", "developer", "scientist", "researcher", "개발자", "엔지니어",
+    "개발", "연구원", "연구", "과학자",
+}
+ROLE_ALIASES = {
+    "engineer": ROLE_TERMS,
+    "developer": ROLE_TERMS,
+    "개발자": ROLE_TERMS,
+    "엔지니어": ROLE_TERMS,
+    "ai": {"ai", "ml", "mlops", "llm", "인공지능", "머신러닝", "딥러닝"},
+    "backend": {"backend", "백엔드"},
+    "frontend": {"frontend", "프론트엔드"},
+    "embedded": {"embedded", "임베디드"},
+    "data": {"data", "데이터"},
+}
 
 
 @dataclass(frozen=True)
@@ -37,8 +52,26 @@ def _terms(value: str) -> set[str]:
 
 def _role_relevance(title: str, targets: list[str]) -> float:
     title_terms = _terms(title)
-    return max((len(title_terms & _terms(target)) / len(_terms(target))
-                for target in targets if _terms(target)), default=0.0)
+    title_lower = title.casefold()
+
+    def matches(term: str) -> bool:
+        aliases = ROLE_ALIASES.get(term, {term})
+        return any(alias in title_terms or (re.search(r"[가-힣]", alias)
+                   and alias in title_lower) for alias in aliases)
+
+    def score(target: str) -> float:
+        terms = _terms(target)
+        anchors = terms - ROLE_TERMS
+        # A shared word such as "engineer" does not make a Java role relevant
+        # to an "AI Engineer" search. Both the field and the role must match.
+        if anchors and not any(matches(term) for term in anchors):
+            return 0.0
+        role_terms = terms & ROLE_TERMS
+        if role_terms and not any(matches(term) for term in role_terms):
+            return 0.0
+        return sum(matches(term) for term in terms) / len(terms) if terms else 0.0
+
+    return max((score(target) for target in targets), default=0.0)
 
 
 def _matches(value: str, choices: list[str]) -> bool:
@@ -52,6 +85,8 @@ def _within_explicit_scope(job: JobPosting, screening: ScreeningResult,
     if screening.decision == ScreeningDecision.EXCLUDED:
         return False
     if job.lifecycle_status not in VISIBLE_STATUSES:
+        return False
+    if conditions.target_jobs and _role_relevance(job.job_title, conditions.target_jobs) == 0:
         return False
     if (conditions.max_experience_years is not None
             and screening.minimum_experience_years is not None

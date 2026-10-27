@@ -1,6 +1,6 @@
 from typing import Literal
 
-from pydantic import BaseModel, Field, HttpUrl, field_validator
+from pydantic import BaseModel, Field, HttpUrl, field_validator, model_validator
 
 
 class Credentials(BaseModel):
@@ -42,8 +42,16 @@ class SearchConditionsInput(BaseModel):
 
 class FeedbackInput(BaseModel):
     decision: Literal["interested", "hold", "not_interested"]
-    reasons: list[str] = Field(default_factory=list, max_length=8)
+    reasons: list[Literal[
+        "company", "job", "skill", "experience", "location", "employment_type", "other"
+    ]] = Field(default_factory=list, max_length=8)
     comment: str | None = Field(default=None, max_length=500)
+
+    @model_validator(mode="after")
+    def require_learning_reason(self):
+        if self.decision != "hold" and not self.reasons:
+            raise ValueError("관심 또는 관심 없음에는 한 가지 이상의 이유가 필요합니다.")
+        return self
 
 
 class CorrectionRequestInput(BaseModel):

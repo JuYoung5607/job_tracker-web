@@ -1,110 +1,14 @@
-"""Persist common job postings across runs, without user-specific screening data."""
+"""Persist processed job postings after lifecycle verification."""
 
-import os
-import sqlite3
-from contextlib import contextmanager
 from datetime import datetime, timezone
-from pathlib import Path
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from uuid import NAMESPACE_URL, uuid5
 
+from nodes.job_store import SQLiteJobStore, canonical_url, job_store
 from nodes.lifecycle_node import content_hash
 from schemas.candidate import JobPosting, JobPostingDraft
 from schemas.errors import AgentError
 from schemas.lifecycle import LifecycleStatus
-from schemas.screening import ScreeningResult
 from state import State
-
-
-DEFAULT_DB_PATH = Path(__file__).resolve().parent.parent / "data" / "jobs.sqlite3"
-
-
-def canonical_url(url: str) -> str:
-    parts = urlsplit(str(url))
-    query = urlencode(sorted(
-        (key, value) for key, value in parse_qsl(parts.query, keep_blank_values=True)
-        if not key.lower().startswith("utm_") and key.lower() not in {"fbclid", "gclid"}
-    ))
-    return urlunsplit((parts.scheme.lower(), parts.netloc.lower().removeprefix("www."),
-                       parts.path.rstrip("/") or "/", query, ""))
-
-
-class SQLiteJobStore:
-    def __init__(self, path: str | Path):
-        self.path = Path(path)
-
-    @contextmanager
-    def _connect(self):
-        self.path.parent.mkdir(parents=True, exist_ok=True)
-        connection = sqlite3.connect(self.path, timeout=10)
-        try:
-            connection.execute(
-                "CREATE TABLE IF NOT EXISTS jobs ("
-                "canonical_url TEXT PRIMARY KEY, job_id TEXT NOT NULL UNIQUE, "
-                "payload TEXT NOT NULL)"
-            )
-            connection.execute(
-                "CREATE TABLE IF NOT EXISTS screening_results ("
-                "canonical_url TEXT PRIMARY KEY, payload TEXT NOT NULL)"
-            )
-            with connection:
-                yield connection
-        finally:
-            connection.close()
-
-    def get(self, url: str) -> JobPosting | None:
-        with self._connect() as connection:
-            row = connection.execute(
-                "SELECT payload FROM jobs WHERE canonical_url = ?", (canonical_url(url),)
-            ).fetchone()
-        return JobPosting.model_validate_json(row[0]) if row else None
-
-    def get_by_job_id(self, job_id: str) -> JobPosting | None:
-        with self._connect() as connection:
-            row = connection.execute(
-                "SELECT payload FROM jobs WHERE job_id = ?", (job_id,)
-            ).fetchone()
-        return JobPosting.model_validate_json(row[0]) if row else None
-
-    def save(self, job: JobPosting) -> None:
-        with self._connect() as connection:
-            connection.execute(
-                "INSERT INTO jobs (canonical_url, job_id, payload) VALUES (?, ?, ?) "
-                "ON CONFLICT(canonical_url) DO UPDATE SET payload=excluded.payload",
-                (canonical_url(str(job.source_url)), job.job_id, job.model_dump_json()),
-            )
-
-    def save_screening(self, result: ScreeningResult) -> None:
-        with self._connect() as connection:
-            connection.execute(
-                "INSERT INTO screening_results(canonical_url,payload) VALUES(?,?) "
-                "ON CONFLICT(canonical_url) DO UPDATE SET payload=excluded.payload",
-                (canonical_url(str(result.source_url)), result.model_dump_json()),
-            )
-
-    def list_screenings(self) -> list[ScreeningResult]:
-        with self._connect() as connection:
-            rows = connection.execute("SELECT payload FROM screening_results").fetchall()
-        return [ScreeningResult.model_validate_json(row[0]) for row in rows]
-
-
-def make_existing_job_lookup_node(store: SQLiteJobStore):
-    def existing_job_lookup_node(state: State) -> dict:
-        candidate = state.get("current_candidate")
-        if candidate is None:
-            return {"existing_job": None}
-        try:
-            existing = store.get(str(candidate.url))
-            print(f"[Job Lookup] {candidate.url}: {'기존 공고 있음' if existing else '신규 후보'}")
-            return {"existing_job": existing}
-        except Exception as exc:
-            print(f"[Job Lookup] 조회 실패: {type(exc).__name__}: {exc}")
-            return {"existing_job": None, "errors": [AgentError(
-                node_name="job_lookup", error_type=type(exc).__name__,
-                message=f"기존 공고 조회 실패: {candidate.url}",
-                occurred_at=datetime.now(timezone.utc), retryable=True,
-            )]}
-    return existing_job_lookup_node
 
 
 def make_job_persister_node(store: SQLiteJobStore):
@@ -176,6 +80,4 @@ def make_job_persister_node(store: SQLiteJobStore):
     return job_persister_node
 
 
-job_store = SQLiteJobStore(os.getenv("JOB_TRACKER_DB_PATH") or DEFAULT_DB_PATH)
-existing_job_lookup_node = make_existing_job_lookup_node(job_store)
 job_persister_node = make_job_persister_node(job_store)

@@ -1,27 +1,24 @@
 from langgraph.graph import END, START, StateGraph
+from collections.abc import Callable
 
 from node_trace import trace_node
 from nodes.candidate_iterator import candidate_iterator_node
 from nodes.company_enricher_node import company_enricher_node
-from nodes.combined_listing_searcher_node import make_combined_listing_searcher_node
 from nodes.extractor_node import extractor_node
 from nodes.feed_publisher_node import SQLiteFeedStore, make_feed_publisher_node
-from nodes.listing_searcher_node import make_listing_searcher_node
+from nodes.searcher_node import make_html_listing_collector, make_searcher_node
 from nodes.jumpit_searcher_node import make_jumpit_position_fetcher, make_jumpit_searcher_node
-from nodes.job_persister_node import existing_job_lookup_node, job_persister_node, job_store
+from nodes.existing_job_lookup_node import existing_job_lookup_node, make_existing_job_lookup_node
+from nodes.job_persister_node import job_persister_node, make_job_persister_node
+from nodes.job_store import job_store
 from nodes.lifecycle_node import lifecycle_node
 from nodes.navigator_node import make_navigator_node
 from nodes.page_fetcher import make_page_fetcher
-from nodes.planner_node import planner_node
+from nodes.planner_node import make_planner_node
 from nodes.ranker_node import make_ranker_node
-from nodes.searcher_node import searcher_node
 from nodes.verifier_node import verifier_node
 from state import State
 from personalization_state import PersonalizationState
-
-
-def route_after_planner(state: State) -> str:
-    return "searcher" if state.get("search_plan") is not None else "end"
 
 
 def route_after_iterator(state: State) -> str:
@@ -43,43 +40,49 @@ def route_after_extractor(state: State) -> str:
 
 fetch_page = make_page_fetcher()
 navigator_node = make_navigator_node(fetch_page)
-listing_searcher_node = make_combined_listing_searcher_node(
-    make_listing_searcher_node(fetch_page),
-    make_jumpit_searcher_node(make_jumpit_position_fetcher(), broad_first=True),
+planner_node = make_planner_node(
+    make_searcher_node(
+        make_html_listing_collector(fetch_page),
+        make_jumpit_searcher_node(make_jumpit_position_fetcher(), broad_first=True),
+    ),
 )
-jumpit_searcher_node = make_jumpit_searcher_node(make_jumpit_position_fetcher())
-
-
-def build_workflow(*, listing_experiment: bool = False, jumpit_experiment: bool = False):
-    if listing_experiment and jumpit_experiment:
-        raise ValueError("후보 발견 방식은 하나만 선택해야 합니다.")
+def build_workflow(*, store=None, user_scoped_screening: bool = False,
+                   on_external_start: Callable[[], None] | None = None):
+    if on_external_start is not None:
+        run_fetch_page = make_page_fetcher(on_request_start=on_external_start)
+        run_navigator = make_navigator_node(run_fetch_page)
+        run_jumpit_fetcher = make_jumpit_position_fetcher(on_request_start=on_external_start)
+        run_planner = make_planner_node(
+            make_searcher_node(
+                make_html_listing_collector(run_fetch_page),
+                make_jumpit_searcher_node(run_jumpit_fetcher, broad_first=True),
+            ),
+        )
+    else:
+        run_navigator = navigator_node
+        run_planner = planner_node
     workflow = StateGraph(State)
     workflow.add_node("candidate_iterator_node", trace_node("candidate_iterator_node", candidate_iterator_node))
-    workflow.add_node("existing_job_lookup_node", trace_node("existing_job_lookup_node", existing_job_lookup_node))
-    workflow.add_node("navigator_node", trace_node("navigator_node", navigator_node))
+    lookup = make_existing_job_lookup_node(store) if store is not None else existing_job_lookup_node
+    persister = make_job_persister_node(store) if store is not None else job_persister_node
+    if user_scoped_screening:
+        base_persister = persister
+
+        def persister(state: State) -> dict:
+            # Common job facts may be shared; a user's eligibility may not.
+            return base_persister({**state, "screening_result": None})
+
+    workflow.add_node("existing_job_lookup_node", trace_node("existing_job_lookup_node", lookup))
+    workflow.add_node("navigator_node", trace_node("navigator_node", run_navigator))
     workflow.add_node("extractor_node", trace_node("extractor_node", extractor_node))
     workflow.add_node("company_enricher_node", trace_node("company_enricher_node", company_enricher_node))
     workflow.add_node("verifier_node", trace_node("verifier_node", verifier_node))
     workflow.add_node("lifecycle_node", trace_node("lifecycle_node", lifecycle_node))
-    workflow.add_node("job_persister_node", trace_node("job_persister_node", job_persister_node))
+    workflow.add_node("job_persister_node", trace_node("job_persister_node", persister))
 
-    if jumpit_experiment:
-        workflow.add_node("jumpit_searcher_node", trace_node("jumpit_searcher_node", jumpit_searcher_node))
-        workflow.add_edge(START, "jumpit_searcher_node")
-        workflow.add_edge("jumpit_searcher_node", "candidate_iterator_node")
-    elif listing_experiment:
-        workflow.add_node("listing_searcher_node", trace_node("listing_searcher_node", listing_searcher_node))
-        workflow.add_edge(START, "listing_searcher_node")
-        workflow.add_edge("listing_searcher_node", "candidate_iterator_node")
-    else:
-        workflow.add_node("planner_node", trace_node("planner_node", planner_node))
-        workflow.add_node("searcher_node", trace_node("searcher_node", searcher_node))
-        workflow.add_edge(START, "planner_node")
-        workflow.add_conditional_edges(
-            "planner_node", route_after_planner,
-            {"searcher": "searcher_node", "end": END},
-        )
-        workflow.add_edge("searcher_node", "candidate_iterator_node")
+    workflow.add_node("planner_node", trace_node("planner_node", run_planner))
+    workflow.add_edge(START, "planner_node")
+    workflow.add_edge("planner_node", "candidate_iterator_node")
 
     workflow.add_conditional_edges(
         "candidate_iterator_node", route_after_iterator,
@@ -102,8 +105,6 @@ def build_workflow(*, listing_experiment: bool = False, jumpit_experiment: bool 
 
 
 app = build_workflow()
-listing_app = build_workflow(listing_experiment=True)
-jumpit_app = build_workflow(jumpit_experiment=True)
 
 
 def build_personalization_workflow(*, store=job_store, feed_store=None):

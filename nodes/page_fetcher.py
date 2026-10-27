@@ -4,6 +4,7 @@ import re
 import socket
 from datetime import datetime
 from html.parser import HTMLParser
+from typing import Callable
 from urllib.parse import urljoin, urlsplit
 
 import httpx
@@ -278,7 +279,7 @@ def _check_public_host(url: str) -> None:
             raise ValueError(f"공개 IP가 아닌 주소로 연결됩니다: {host}")
 
 
-def make_page_fetcher():
+def make_page_fetcher(on_request_start: Callable[[], None] | None = None):
     """공개 HTTPS 페이지를 제한된 크기로 가져오는 함수를 만듭니다."""
 
     def fetch_page(url: str) -> FetchedPage:
@@ -290,6 +291,8 @@ def make_page_fetcher():
             current_url = url
             for redirect_count in range(MAX_REDIRECTS + 1):
                 _check_public_host(current_url)
+                if on_request_start is not None:
+                    on_request_start()
                 with client.stream(
                     "GET",
                     current_url,

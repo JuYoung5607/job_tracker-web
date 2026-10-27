@@ -17,8 +17,8 @@
 1. 사용자가 초기 검색 조건을 설정한다.
 2. 시스템은 폭넓게 공고를 찾아 검증·중복 제거 후 공통 Job DB에 저장한다.
 3. 첫 피드는 명시적 조건과 직무 관련성 중심으로 정렬한다.
-4. 사용자가 각 공고에 관심/보류/관심 없음 및 복수 이유를 남긴다. 가능하면 이유의 구체값도 받는다.
-5. 피드백 저장 후 개인 선호 점수를 갱신하고 같은 공고 집합을 재정렬한다.
+4. 사용자는 원할 때만 각 공고에 관심/보류/관심 없음 및 복수 이유를 남긴다. 가능하면 이유의 구체값도 받는다. 피드백 없이도 검색과 피드 생성은 완료된다.
+5. 피드백이 제출된 경우에만 개인 선호 점수를 갱신하고 같은 공고 집합을 재정렬한다.
 6. 다음 수집에서도 폭넓은 탐색을 유지한다. 학습된 선호는 검색 제거가 아닌 랭킹에 주로 사용한다.
 7. 사용자는 명시적 조건과 학습된 선호를 구분해 확인하고 수정·초기화할 수 있다.
 
@@ -26,7 +26,8 @@
 
 ```text
 [공통 수집]
-SearchConditions → Planner → Searcher → Candidate Iterator
+웹의 새 공고 찾기 요청 → 실행 ID·상태 조회
+SearchConditions → Planner(채용 목록 수집) → Candidate Iterator
  → Navigator → Extractor → Company Enricher → Verifier
  → Lifecycle → Job Persister → Job DB
 
@@ -35,11 +36,13 @@ Job DB + SearchConditions + PreferenceProfile
  → Ranker → Feed Publisher → Web Feed
 
 [비동기 피드백]
-Web Feed → HITL Feedback → Feedback Store
+Web Feed → 사용자 선택이 있는가?
+  ├─ 없음 → 피드 유지 (수집 실행은 이미 완료)
+  └─ 있음 → HITL Feedback → Feedback Store
  → Preference Updater → Ranker 재실행 → Feed 갱신
 ```
 
-웹에서 발생하는 피드백은 수집 작업을 중단시키지 않는다. 동기식 운영자 승인에만 선택적으로 LangGraph interrupt를 고려한다.
+웹에서 발생하는 피드백은 수집 작업을 중단시키지 않는다. 조건 분기만으로 선택적 참여를 구현한다. LangGraph `interrupt` 실험은 운영자가 요청한 단일 검토 건의 별도 실행에 한정하고, 기본 사용자 피드백에는 사용하지 않는다. 이때 영속 체크포인트와 재개 식별자·권한·대기 실행 관리가 필요하다.
 
 ## MVP 범위
 

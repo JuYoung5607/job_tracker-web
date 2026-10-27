@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 from urllib.parse import urlsplit
 from uuid import uuid4
 
-from fastapi import Cookie, Depends, FastAPI, HTTPException, Response, status
+from fastapi import BackgroundTasks, Cookie, Depends, FastAPI, HTTPException, Response, status
 
 from .config import settings
 from .database import connect, initialize_database, table_exists
@@ -31,9 +31,29 @@ def iso_now() -> str:
     return utc_now().isoformat()
 
 
+def first_seen_in_run(first_seen_at: str | None, run: sqlite3.Row | None) -> bool:
+    """Fallback for runs saved before per-run new-job IDs were introduced."""
+    if not first_seen_at or run is None:
+        return False
+    try:
+        first = datetime.fromisoformat(first_seen_at.replace("Z", "+00:00"))
+        started = datetime.fromisoformat(run["started_at"])
+        finished = datetime.fromisoformat(run["finished_at"] or run["started_at"])
+        return started <= first <= finished
+    except (TypeError, ValueError):
+        return False
+
+
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     initialize_database()
+    with connect() as connection:
+        # In-process background jobs cannot continue after an API restart.
+        connection.execute(
+            "UPDATE search_runs SET status='interrupted',phase='서버 재시작으로 중단됨',"
+            "finished_at=? WHERE status IN ('queued','running')",
+            (iso_now(),),
+        )
     yield
 
 
@@ -162,6 +182,52 @@ def refresh_feed(user: UserView = Depends(current_user)):
     return {"visible_job_count": refresh_user_feed(user.user_id)}
 
 
+@app.post("/api/search-runs", status_code=status.HTTP_202_ACCEPTED)
+def start_search(background_tasks: BackgroundTasks, user: UserView = Depends(current_user)):
+    import os
+    from pathlib import Path
+
+    from dotenv import load_dotenv
+
+    from .search_runs import create_run, run_search
+
+    load_dotenv(Path(__file__).resolve().parents[2] / ".env")
+    if not os.getenv("OPENAI_API_KEY"):
+        raise HTTPException(status_code=503, detail="검색에 필요한 OPENAI_API_KEY가 설정되지 않았습니다.")
+    try:
+        run = create_run(user.user_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from exc
+    background_tasks.add_task(run_search, run["run_id"], user.user_id)
+    return run
+
+
+@app.get("/api/search-runs/latest")
+def latest_search(user: UserView = Depends(current_user)):
+    from .search_runs import get_latest_run
+
+    return {"run": get_latest_run(user.user_id)}
+
+
+@app.get("/api/search-runs/quota")
+def search_quota(user: UserView = Depends(current_user)):
+    from .search_runs import get_daily_quota
+
+    return get_daily_quota(user.user_id)
+
+
+@app.get("/api/search-runs/{run_id}")
+def search_status(run_id: str, user: UserView = Depends(current_user)):
+    from .search_runs import get_run
+
+    run = get_run(run_id, user.user_id)
+    if run is None:
+        raise HTTPException(status_code=404, detail="검색 실행을 찾을 수 없습니다.")
+    return run
+
+
 def source_name(url: str) -> str:
     host = urlsplit(url).netloc.lower().removeprefix("www.")
     names = {
@@ -175,6 +241,10 @@ def source_name(url: str) -> str:
 
 @app.get("/api/jobs")
 def jobs(user: UserView = Depends(current_user)):
+    from nodes.job_store import SQLiteJobStore
+
+    if SQLiteJobStore(settings.database_path).close_past_deadline():
+        refresh_user_feed(user.user_id)
     with connect() as connection:
         if not table_exists(connection, "user_feeds"):
             return {"version": 0, "generated_at": None, "items": []}
@@ -188,6 +258,13 @@ def jobs(user: UserView = Depends(current_user)):
             "SELECT job_id,decision FROM job_feedback WHERE user_id=?", (user.user_id,)
         ).fetchall()
         feedback = {item["job_id"]: item["decision"] for item in feedback_rows}
+        latest_completed = connection.execute(
+            "SELECT started_at,finished_at,new_job_ids FROM search_runs "
+            "WHERE user_id=? AND status='completed' ORDER BY started_at DESC LIMIT 1",
+            (user.user_id,),
+        ).fetchone()
+        new_ids = (set(json.loads(latest_completed["new_job_ids"]))
+                   if latest_completed and latest_completed["new_job_ids"] else set())
         enriched = []
         for item in feed.get("items", []):
             if item.get("screening_decision") == "excluded":
@@ -198,6 +275,8 @@ def jobs(user: UserView = Depends(current_user)):
                     "SELECT payload FROM jobs WHERE job_id=?", (item.get("job_id"),)
                 ).fetchone()
             job = json.loads(job_row["payload"]) if job_row else {}
+            if job.get("lifecycle_status") == "closed":
+                continue
             url = str(item.get("source_url") or job.get("source_url") or "")
             enriched.append({
                 **item,
@@ -207,7 +286,11 @@ def jobs(user: UserView = Depends(current_user)):
                 "experience_level": job.get("experience_level"),
                 "employment_type": job.get("employment_type"),
                 "recruiting_status": job.get("lifecycle_status", "unknown"),
+                "opened_at": job.get("opened_at"),
                 "closes_at": job.get("closes_at"),
+                "is_new": (item.get("job_id") in new_ids if latest_completed and
+                           latest_completed["new_job_ids"] is not None else
+                           first_seen_in_run(job.get("first_seen_at"), latest_completed)),
                 "feedback_decision": feedback.get(item.get("job_id")),
             })
     return {"version": feed.get("version", 0), "generated_at": feed.get("generated_at"),
@@ -216,17 +299,20 @@ def jobs(user: UserView = Depends(current_user)):
 
 @app.put("/api/jobs/{job_id}/feedback")
 def save_feedback(job_id: str, value: FeedbackInput, user: UserView = Depends(current_user)):
-    now = iso_now()
-    with connect() as connection:
-        connection.execute(
-            "INSERT INTO job_feedback(feedback_id,user_id,job_id,decision,reasons_json,comment,created_at,updated_at) "
-            "VALUES(?,?,?,?,?,?,?,?) ON CONFLICT(user_id,job_id) DO UPDATE SET "
-            "decision=excluded.decision,reasons_json=excluded.reasons_json,comment=excluded.comment,"
-            "updated_at=excluded.updated_at",
-            (str(uuid4()), user.user_id, job_id, value.decision,
-             json.dumps(value.reasons, ensure_ascii=False), value.comment, now, now),
-        )
-    return {"job_id": job_id, "decision": value.decision, "saved_at": now}
+    from nodes.job_store import SQLiteJobStore
+    from .feedback_workflow import personalize_after_feedback, record_feedback
+
+    if SQLiteJobStore(settings.database_path).get_by_job_id(job_id) is None:
+        raise HTTPException(status_code=404, detail="공고를 찾을 수 없습니다.")
+    feedback_state = record_feedback(user.user_id, job_id, value, saved_at=iso_now())
+    visible_job_count = personalize_after_feedback(feedback_state)
+    return {
+        "job_id": job_id,
+        "decision": feedback_state.decision,
+        "saved_at": feedback_state.saved_at,
+        "preference_profile_version": feedback_state.preference_profile_version,
+        "visible_job_count": visible_job_count,
+    }
 
 
 @app.post("/api/correction-requests", status_code=status.HTTP_201_CREATED)

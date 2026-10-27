@@ -11,7 +11,7 @@ from schemas.candidate import (
 from schemas.company import CompanyProfile
 from schemas.errors import AgentError
 from schemas.lifecycle import LifecycleResult
-from schemas.search import SearchBudget, SearchConditions, SearchPlan
+from schemas.search import SearchBudget, SearchConditions
 from schemas.screening import ExtractedPostingFacts, ScreeningResult
 from schemas.verification import VerificationResult
 
@@ -27,7 +27,6 @@ class State(TypedDict):
     search_conditions: Required[SearchConditions]
     last_searched_at: NotRequired[datetime | None]
     search_budget: Required[SearchBudget]
-    search_plan:  NotRequired[SearchPlan | None]
     candidates: NotRequired[list[Candidate]]
     candidate_cursor: NotRequired[int]
 

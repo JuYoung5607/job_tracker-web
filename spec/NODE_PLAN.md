@@ -2,12 +2,11 @@
 
 ## 공통 규칙
 
-각 노드는 필요한 State만 읽고 업데이트할 필드만 반환한다. LLM은 전략 생성·문서 추출·근거 검증처럼 의미 판단이 필요한 곳에만 쓴다. 저장, 반복, 예산 관리, 피드백 집계는 일반 Python Worker가 기본이다. RAG Retriever와 Critic은 MVP의 필수 노드가 아니다.
+각 노드는 필요한 State만 읽고 업데이트할 필드만 반환한다. LLM은 공고 문서 추출처럼 의미 판단이 필요한 곳에만 쓴다. 채용 목록 수집, 저장, 반복, 예산 관리, 피드백 집계는 일반 Python Worker가 기본이다. RAG Retriever와 Critic은 MVP의 필수 노드가 아니다.
 
 | 노드 | 성격 | 입력 | 출력 | 실패 정책 |
 | --- | --- | --- | --- | --- |
-| Planner | LLM Agent | SearchConditions, SearchBudget, SearchHistory | SearchPlan | 스키마 검증 후 안전한 기본 계획 |
-| Searcher | 검색 도구 Worker | SearchPlan, SearchBudget | Candidate[] | 호출 상한·시간 상한, 확장용 슬롯 예약 |
+| Planner | 규칙 기반 목록 수집 Worker | SearchConditions, SearchBudget | Candidate[] | 호출·시간·후보 상한, 플랫폼별 오류 기록 |
 | Candidate Iterator | 제어 Worker | Candidate[], cursor, 처리 완료·신규 후보 | current_candidate, cursor, 후보 큐 | 중복·초과 후보 건너뜀 |
 | Navigator | 접근 Worker | Candidate | 상세: JobDocument / 목록: 신규 Candidate[], 접근 상태 | 후보별 오류 기록 |
 | Extractor | LLM Agent | JobDocument | JobPostingDraft, Evidence[] | 빈 필드 추측 금지 |
@@ -23,40 +22,24 @@
 
 ## 노드별 경계
 
-### Planner / Searcher
+### Planner (현재 채용 목록 수집)
 
-Planner는 사용자가 직접 정한 직무·기술·경력·지역·고용형태를 포괄하도록 검색 track과 query를 만든다. 학습된 비선호로 query를 자동 삭제하지 않는다. Searcher는 후보를 폭넓게 발견하고 URL, 출처, 검색어, 발견시각을 남긴다. 검색 결과의 목록 페이지를 채용 상세 페이지로 오인하지 않는다. 검색 호출 수는 최대치이지 반드시 모두 소진해야 하는 목표가 아니다.
+Planner는 LLM 계획 생성이나 OpenAI 웹 검색을 하지 않고 통합 Searcher를 호출하는 그래프 진입 노드다. Searcher는 SearchConditions와 SearchBudget을 받아 JobKorea·Incruit·Saramin HTML 목록과 Jumpit 포지션 API 목록에 호출·시간 예산을 나눈다. URL 중복을 제거하고 상세 공고 후보를 HTML 3건, Jumpit 1건 순서로 섞어 반환한다. 플랫폼별 HTML/API 해석 코드는 별도 모듈에 두고, 예산·후보 병합은 `searcher_node.py`에서 관리한다. 현재 웹 실행의 상한은 목록 호출 8회, 후보 12건, 목록 탐색 시간 300초다. 호출 수는 최대치이지 반드시 소진할 목표가 아니다.
 
-사용자가 `preferred_source_domains`를 지정하면 Planner는 검색 호출 예산의 최대 절반을 해당 도메인별 검색 경로에 예약한다. 나머지는 모든 사이트를 대상으로 하는 일반 검색에 사용한다. 사이트 경로는 `SearchQuery.allowed_domains`로 기록하고 일반 검색보다 먼저 실행한다. 현재 기본 검색 모델 `gpt-4.1-mini`는 웹 검색 도구의 `filters`를 지원하지 않으므로 Searcher는 검색어에 `site:도메인`을 붙이고, 반환된 후보 URL이 지정 도메인에 속하는지 다시 확인한다. 신입·주니어만 선택한 경우 Planner는 사이트별·일반 검색어 모두에 해당 경력 수준을 반영한다. Searcher는 개별 공고 검색 결과 제목에 최소 요구 경력이 설정 상한을 초과한다고 명시된 후보만 조기 제외하고, 신입·경력 동시 지원 또는 경력 불명 후보는 본문 검증으로 넘긴다. Searcher는 예산·시간이 허용하는 검색을 모두 실행한 뒤 경로별로 후보를 번갈아 골라 전체 후보 상한을 지킨다. 사이트당 최소 한 번을 우선하되, 예산보다 사이트가 많으면 입력 순서대로 가능한 수만 검색한다. 도메인 선호는 검색 경로일 뿐 기업 국적의 근거가 아니다. URL 후보가 실제로 열리는지와 마감·경력·최종 모회사 국적은 이후 단계에서 별도 검증한다.
+JobKorea는 직무명에 신입·주니어 조건을 반영한다. Incruit는 해당 단어를 검색어에 함께 넣으면 결과가 사라질 수 있어 직무명과 사이트의 신입 필터를 사용한다. Saramin은 신입·경력 및 연차 필터와 상세 공고 ID를 활용한다. Jumpit은 현재 포지션 목록에서 마감일·최소 경력·제목을 먼저 확인한다. 플랫폼별 제목이나 목록 카드에서 명백한 불일치만 조기 제외하고 최종 경력·직무·마감 판정은 이후 원문 검증에 맡긴다. 접근이 막힌 JobPlanet은 기본 대상에서 제외한다.
 
 ### Candidate Iterator / Navigator 목록 확장
 
 사람인 목록 실험은 `search/recruit`의 실제 `item_recruit` 카드에서 제목·경력 표시·공고 ID를 읽고, 지원 버튼 링크가 아닌 카드 제목 링크만 Candidate로 만든다. 신입·주니어 선택 시 사람인의 신입/경력·연차 상한·경력무관 필터를 검색 요청에 반영하고, 카드에서 명백한 연차 초과·상위 직책을 다시 확인한다. 목록 HTML이 2MB를 조금 넘으므로 사람인 목록 조회에만 3MB 상한을 적용한다. 상세 페이지는 동일한 `rec_idx`의 공개 공고 본문을 별도로 읽어 부모 페이지 앞에 합친다. 상세 본문이 없거나 ID가 다르면 부모의 사이트 메뉴·요약만으로 판정하지 않고 `review`로 남긴다.
 
-현재 채용 목록 직접 탐색 실험에서는 `JOB_TRACKER_DISCOVERY=listing`으로
-Planner·OpenAI 웹 검색을 우회하고, JobKorea·Incruit·Saramin 검색 목록과
-Jumpit 현재 채용 목록 API에서 상세 공고 URL을 Candidate로 수집한다. 네 플랫폼은
-`max_search_calls`와 `timeout_seconds`를 공유한다. 현재 두 목표 직무·호출 상한 10회에서는
-세 HTML 플랫폼에 각 직무당 1회씩 총 6회, Jumpit에 직무별 넓은 검색과 신입 검색
-총 4회를 배분한다. 각 플랫폼 후보는 3:1로 섞고 URL 중복을 제거해 `max_candidates`를 지킨다.
-Jumpit의 개별 모드(`JOB_TRACKER_DISCOVERY=jumpit`)는 비교 실험용으로 유지한다.
-접근이 막힌 JobPlanet은 직접 목록 대상과 기본 선호 출처에서 제외한다.
-JobKorea는 직무명에 신입·주니어를 추가해 검색하고, Incruit는 해당 단어를 함께
-검색할 때 결과가 사라져 직무명과 사이트의 신입 필터(`crr=1`)를 사용한다.
-인크루트 목록 카드의 경력 표시와 제목에서 명백한 연차 초과·상위 직책을 조기
-제외하지만 `신입/경력` 혼합 공고와 박사 학위 표기만 있는 공고는 상세 검증으로 넘긴다.
-목록의 제목 없는 홍보 링크는 제외한다. 첫 페이지에서 후보가 부족하면 남은 검색
-호출·시간 예산 안에서 다음 페이지를 탐색한다. 후보 발견 이후의
-Iterator → Navigator → Extractor → Verifier 경로는 기존과 동일하다.
-목록에서 발견했다는 사실은 모집 중의 증거가 아니며 Verifier가 상세 페이지에서
-마감·경력 여부를 다시 판정한다. 신입·주니어 검색에서 상세 직무명에 총괄·센터장·
-시니어 등 상위 직책이 확인되면 경력무관 표시와 관계없이 제외한다.
-이 경로는 네 플랫폼을 이용한 비교 실험이고,
-기본 웹 검색 경로를 대체하지 않는다.
+Searcher 내부의 플랫폼별 수집기는 검색 첫 페이지에서 후보가 부족할 때만 남은
+호출·시간 예산 내에서 다음 페이지를 탐색한다. 목록에서 발견했다는 사실은
+모집 중의 증거가 아니며 Verifier가 상세 페이지에서 마감·경력을 다시 판정한다.
+`신입/경력` 혼합 공고와 경력 불명 공고는 원문 검증으로 넘긴다.
 
 `candidates`는 인덱스가 있는 순차 큐다. 최초 `candidate_cursor=0`; Iterator는 `candidates[candidate_cursor]`를 `current_candidate`로 선택한다. 같은 후보를 선택한 즉시 커서를 올리지 않는다. 상세 공고의 저장 완료, 목록 확장 완료 또는 후보별 실패가 보고되면 Iterator가 Navigator의 신규 후보를 원래 큐 뒤에 병합하고 URL 중복·총 후보 상한을 확인한 다음 커서를 1 올린다. 다음 선택 전에 후보별 State를 초기화한다. 커서가 큐 길이에 도달하면 종료한다.
 
-`job_detail`은 본문 추출 경로로 보낸다. `listing`/`unknown`은 Navigator가 실제 페이지를 열어 상세 공고 URL을 찾아 새 Candidate로 반환한다. 목록 자체를 Extractor·Job Persister에 보내지 않는다. 새 후보에는 부모 목록 URL/ID와 `discovery_depth=1`을 기록한다. MVP에서는 목록에서 목록으로 이어지는 확장은 금지한다. Searcher와 Iterator는 함께 `SearchBudget.max_candidates`를 지킨다. Searcher는 처음부터 모든 슬롯을 쓰지 않고 목록 확장용 슬롯을 예약한다. 예약 크기와 상세 URL 추출 수는 설정값으로 두되 전체 상한을 넘지 않는다.
+`job_detail`은 본문 추출 경로로 보낸다. `listing`/`unknown`은 Navigator가 실제 페이지를 열어 상세 공고 URL을 찾아 새 Candidate로 반환한다. 목록 자체를 Extractor·Job Persister에 보내지 않는다. 새 후보에는 부모 목록 URL/ID와 `discovery_depth=1`을 기록한다. MVP에서는 목록에서 목록으로 이어지는 확장은 금지한다. Planner와 Iterator는 함께 `SearchBudget.max_candidates`를 지킨다.
 
 ### Navigator / Extractor / Verifier
 
@@ -99,7 +82,7 @@ Ranker는 사용자가 명시한 강한 조건을 우선 적용한다. Preferenc
 
 ## 실행 경로
 
-공통 수집: Planner → Searcher → Iterator → Navigator; 상세 공고는 Extractor → Company Enricher → Verifier → Lifecycle → Job Persister → Iterator, 목록/종류 불명은 상세 URL 후보 발견 → Iterator로 돌아간다.
+공통 수집: Planner(채용 목록 수집) → Iterator → Navigator; 상세 공고는 Extractor → Company Enricher → Verifier → Lifecycle → Job Persister → Iterator, 목록/종류 불명은 상세 URL 후보 발견 → Iterator로 돌아간다.
 
 개인화: Job DB → Ranker → Feed Publisher.
 

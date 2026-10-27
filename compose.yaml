@@ -8,6 +8,9 @@ services:
       DATABASE_PATH: /data/jobs.sqlite3
       SESSION_DAYS: ${SESSION_DAYS:-14}
       COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_EXTRACT_MODEL: ${OPENAI_EXTRACT_MODEL:-gpt-4.1-mini}
+      JOB_TRACKER_DB_PATH: /data/jobs.sqlite3
     volumes:
       - ./data:/data
     expose:

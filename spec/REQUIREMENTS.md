@@ -12,8 +12,7 @@
 
 ### FR-02 넓은 수집
 
-Planner는 SearchConditions와 SearchBudget으로 여러 검색 경로를 만든다. Searcher는 실제 출처 URL만 Candidate로 반환하고 검색어·track·발견 시각을 기록한다. PreferenceProfile의 부정 가중치 때문에 검색어를 제거하지 않는다. 최대 호출·후보·시간 예산을 지킨다. 목록 URL은 상세 공고로 바로 저장하지 않는다.
-Searcher는 목록 확장용 후보 슬롯을 예약하여 초기 검색 결과가 전체 후보 상한을 모두 차지하지 않게 한다.
+Planner는 SearchConditions와 SearchBudget을 사용해 네 채용 플랫폼의 현재 목록 조회 예산을 배분한다. 플랫폼별 수집기는 실제 출처 URL만 Candidate로 반환하고 검색어·track·발견 시각을 기록한다. PreferenceProfile의 부정 가중치 때문에 명시적 검색 범위를 줄이지 않는다. 최대 호출·후보·시간 예산을 지킨다. 목록 URL은 상세 공고로 바로 저장하지 않는다.
 
 ### FR-03 후보 처리
 
@@ -45,7 +44,7 @@ Feedback Store는 user_id, job_id, decision, reasons, comment, created_at, idemp
 - 안정성: 검색/접근/LLM/DB 오류를 단계별로 기록하고 예산 안에서만 재시도한다. Company Enricher 오류는 비차단이다.
 - 보안·개인정보: 사용자 인증, user_id별 접근 통제, 피드백/프로필 삭제·보존 정책, 웹 콘텐츠 프롬프트 인젝션 방어를 적용한다.
 - 비용: 검색 및 LLM 호출 상한을 두고 중복 URL·중복 본문 처리를 줄인다.
-- 재현성: SearchPlan, 사용 모델/프롬프트 버전, Evidence, Ranker 설정, PreferenceProfile 버전과 결과를 추적한다.
+- 재현성: SearchConditions·SearchBudget, 사용 모델/프롬프트 버전, Evidence, Ranker 설정, PreferenceProfile 버전과 결과를 추적한다.
 - 확장성: 후보별 순차 처리에서 시작하되 이후 독립 후보를 병렬화할 수 있게 상태를 격리한다.
 
 ## 수용 테스트

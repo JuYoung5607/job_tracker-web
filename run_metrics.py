@@ -18,7 +18,7 @@ class RunMetrics:
         self.persisted_job_ids: set[str] = set()
 
     def observe(self, node_name: str, update: dict) -> None:
-        if node_name in {"searcher_node", "listing_searcher_node", "jumpit_searcher_node"}:
+        if node_name == "planner_node":
             self.search_candidate_ids.update(
                 candidate.candidate_id for candidate in update.get("candidates", [])
             )

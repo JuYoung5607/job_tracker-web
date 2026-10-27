@@ -19,3 +19,4 @@ def load_settings() -> Settings:
 
 
 settings = load_settings()
+os.environ.setdefault("JOB_TRACKER_DB_PATH", str(settings.database_path))

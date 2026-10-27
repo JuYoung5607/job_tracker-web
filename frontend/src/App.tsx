@@ -1,5 +1,5 @@
-import { FormEvent, useEffect, useMemo, useState } from "react";
-import { api, Feed, FeedbackDecision, Job, SearchConditions, SourceStat, User } from "./api";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { api, Feed, FeedbackDecision, Job, SearchConditions, SearchQuota, SearchRun, SourceStat, User } from "./api";
 
 const statusLabels: Record<string, string> = {
   active: "모집 중", changed: "정보 변경", unknown: "확인 필요", review: "확인 필요"
@@ -109,20 +109,38 @@ function SearchSetup({ initial, onComplete }: {
   </main>;
 }
 
+function koreanDate(value: string | null): string | null {
+  if (!value) return null;
+  const dateOnly = /^(\d{4})-(\d{2})-(\d{2})/.exec(value);
+  if (dateOnly && !/(?:Z|[+-]\d{2}:\d{2})$/.test(value)) {
+    return `${dateOnly[1]}. ${dateOnly[2]}. ${dateOnly[3]}.`;
+  }
+  const date = new Date(value);
+  if (!Number.isNaN(date.getTime())) {
+    return new Intl.DateTimeFormat("ko-KR", {
+      timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit"
+    }).format(date);
+  }
+  return dateOnly ? `${dateOnly[1]}. ${dateOnly[2]}. ${dateOnly[3]}.` : null;
+}
+
 function JobCard({ job, onFeedback, onReport }: {
   job: Job;
   onFeedback: (job: Job, decision: FeedbackDecision) => void;
   onReport: (job: Job) => void;
 }) {
+  const opened = koreanDate(job.opened_at);
+  const closes = koreanDate(job.closes_at);
   return <article className="job-card">
     <div className="card-top">
-      <div><p className="company">{job.company_name}</p><h3>{job.job_title}</h3></div>
+      <div><p className="company">{job.company_name} {job.is_new && <span className="new-badge" aria-label="이번 검색에서 추가된 공고">NEW</span>}</p><h3>{job.job_title}</h3></div>
       <span className={`status ${job.screening_decision}`}>{job.screening_decision === "review" ? "검토 필요" : statusLabels[job.recruiting_status] ?? "모집 확인"}</span>
     </div>
     <div className="facts">
       <span>{job.location.join(" · ") || "지역 미확인"}</span>
       <span>{job.experience_level || "경력 미확인"}</span>
       <span>{job.employment_type || "고용형태 미확인"}</span>
+      <span>{opened && closes ? `모집 기간 ${opened} ~ ${closes}` : closes ? `마감일 ${closes}` : opened ? `모집 시작 ${opened} · 마감일 미확인` : "마감일 미확인"}</span>
     </div>
     <div className="reason-box"><strong>추천 이유</strong><p>{job.reasons.join(" · ") || "설정한 검색 범위에 포함된 공고입니다."}</p></div>
     {job.screening_decision === "review" && job.review_reasons.length > 0 &&
@@ -150,6 +168,13 @@ function Dashboard({ user, onLogout, onEditConditions }: {
   const [reportType, setReportType] = useState("correction");
   const [message, setMessage] = useState("");
   const [notice, setNotice] = useState("");
+  const [feedbackTarget, setFeedbackTarget] = useState<{ job: Job; decision: FeedbackDecision } | null>(null);
+  const [feedbackReasons, setFeedbackReasons] = useState<string[]>([]);
+  const [feedbackBusy, setFeedbackBusy] = useState(false);
+  const [searchRun, setSearchRun] = useState<SearchRun | null>(null);
+  const [searchQuota, setSearchQuota] = useState<SearchQuota | null>(null);
+  const [startingSearch, setStartingSearch] = useState(false);
+  const refreshedRunId = useRef<string | null>(null);
 
   useEffect(() => {
     Promise.all([api.jobs(), api.sourceStats()]).then(([nextFeed, nextStats]) => {
@@ -157,14 +182,77 @@ function Dashboard({ user, onLogout, onEditConditions }: {
     }).finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    api.latestSearch().then(({ run }) => setSearchRun(run)).catch(() => undefined);
+    api.searchQuota().then(setSearchQuota).catch(() => undefined);
+    const timer = window.setInterval(() => {
+      api.searchQuota().then(setSearchQuota).catch(() => undefined);
+    }, 60000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!searchRun || !["queued", "running"].includes(searchRun.status)) return;
+    const timer = window.setInterval(() => {
+      api.latestSearch().then(({ run }) => {
+        if (run) setSearchRun(run);
+      }).catch(() => undefined);
+    }, 3000);
+    return () => window.clearInterval(timer);
+  }, [searchRun?.run_id, searchRun?.status]);
+
+  useEffect(() => {
+    if (searchRun?.status !== "completed" || refreshedRunId.current === searchRun.run_id) return;
+    refreshedRunId.current = searchRun.run_id;
+    Promise.all([api.jobs(), api.sourceStats()]).then(([nextFeed, nextStats]) => {
+      setFeed(nextFeed); setStats(nextStats);
+      setNotice("공고 검색을 마치고 피드를 갱신했어요.");
+    }).catch(() => setNotice("검색은 끝났지만 피드를 다시 불러오지 못했어요. 새로고침해 주세요."));
+  }, [searchRun?.run_id, searchRun?.status]);
+
+  useEffect(() => {
+    if (searchRun && !["queued", "running"].includes(searchRun.status)) {
+      api.searchQuota().then(setSearchQuota).catch(() => undefined);
+    }
+  }, [searchRun?.run_id, searchRun?.status]);
+
+  async function startSearch() {
+    setStartingSearch(true);
+    try {
+      setSearchRun(await api.startSearch());
+      setNotice("저장된 검색 조건으로 공고를 찾기 시작했어요.");
+      api.searchQuota().then(setSearchQuota).catch(() => undefined);
+    } catch (error) {
+      setNotice(error instanceof Error ? error.message : "검색을 시작하지 못했습니다.");
+    } finally {
+      setStartingSearch(false);
+    }
+  }
+
   const jobs = useMemo(() => (feed?.items ?? []).filter(job =>
     `${job.company_name} ${job.job_title} ${job.location.join(" ")}`.toLowerCase().includes(query.toLowerCase())
   ), [feed, query]);
 
-  async function feedback(job: Job, decision: FeedbackDecision) {
-    await api.feedback(job.job_id, decision);
-    setFeed(current => current ? { ...current, items: current.items.map(item => item.job_id === job.job_id ? { ...item, feedback_decision: decision } : item) } : current);
-    setNotice("피드백을 저장했어요.");
+  function feedback(job: Job, decision: FeedbackDecision) {
+    setFeedbackReasons([]);
+    setFeedbackTarget({ job, decision });
+  }
+
+  function toggleFeedbackReason(reason: string) {
+    setFeedbackReasons(current => current.includes(reason)
+      ? current.filter(item => item !== reason) : [...current, reason]);
+  }
+
+  async function submitFeedback(event: FormEvent) {
+    event.preventDefault();
+    if (!feedbackTarget) return;
+    setFeedbackBusy(true);
+    try {
+      await api.feedback(feedbackTarget.job.job_id, feedbackTarget.decision, feedbackReasons);
+      setFeed(await api.jobs());
+      setFeedbackTarget(null);
+      setNotice("피드백을 저장하고 추천 순위를 다시 계산했어요.");
+    } finally { setFeedbackBusy(false); }
   }
 
   async function submitReport(event: FormEvent) {
@@ -179,8 +267,9 @@ function Dashboard({ user, onLogout, onEditConditions }: {
     <main className="dashboard">
       <section className="dashboard-head">
         <div><p className="eyebrow">오늘의 맞춤 공고</p><h1>좋은 기회를 놓치지 않도록.</h1><p>검증 상태와 추천 이유를 확인한 뒤, 지원은 출처 원문에서 진행하세요.</p></div>
-        <div className="summary"><strong>{feed?.items.length ?? 0}</strong><span>추천 공고</span><strong>{feed?.version ?? 0}</strong><span>피드 버전</span></div>
+        <div className="dashboard-actions"><button className="primary" type="button" onClick={startSearch} aria-busy={startingSearch || searchRun?.status === "queued" || searchRun?.status === "running"} disabled={startingSearch || searchQuota?.remaining === 0 || searchRun?.status === "queued" || searchRun?.status === "running"}>{startingSearch ? "검색 시작 중…" : searchRun?.status === "queued" || searchRun?.status === "running" ? "공고 찾는 중…" : searchQuota?.remaining === 0 ? "오늘 검색 사용 완료" : "새 공고 찾기"}</button><p>한국시간 하루 1회 · 오늘 남은 검색 {searchQuota?.remaining ?? "–"}회{searchQuota?.remaining === 0 && searchQuota.next_available_at ? " · 내일 00:00부터 가능" : ""}</p><p>목록 조회 최대 8회 · 공고 후보 최대 12건</p><div className="summary"><strong>{feed?.items.length ?? 0}</strong><span>추천 공고</span><strong>{feed?.version ?? 0}</strong><span>피드 버전</span></div></div>
       </section>
+      {searchRun && <section className="search-progress" aria-live="polite"><strong>검색 상태: {searchRun.phase}</strong><span>후보 {searchRun.discovered_count}건 · 처리 {searchRun.processed_count}건 · 적합 {searchRun.eligible_count}건 · 검토 {searchRun.review_count}건 · 제외 {searchRun.excluded_count}건 · 오류 {searchRun.failed_count}건</span>{searchRun.error_message && <span className="form-error">{searchRun.error_message}</span>}</section>}
       <section className="toolbar"><input aria-label="공고 검색" value={query} onChange={e => setQuery(e.target.value)} placeholder="회사, 직무, 지역 검색" /><span>{jobs.length}개의 결과</span></section>
       {notice && <button className="notice" onClick={() => setNotice("")}>{notice} ×</button>}
       <section className="feed" aria-live="polite">
@@ -191,6 +280,7 @@ function Dashboard({ user, onLogout, onEditConditions }: {
       <section className="transparency"><div><p className="eyebrow">출처 투명성</p><h2>어디에서 얼마나 확인했는지 기록합니다.</h2><p>접근 제한을 우회하지 않고, 상세 문단과 이미지는 재게시하지 않습니다.</p></div><div className="stats">{stats.length ? stats.map(stat => <div key={stat.source_name}><strong>{stat.source_name}</strong><span>요청 {stat.request_count}회 · 누적 {stat.accumulated_job_count}건</span></div>) : <p>아직 기록된 출처 통계가 없습니다.</p>}</div></section>
     </main>
     {reportJob && <div className="modal-backdrop" role="presentation"><form className="report-modal" onSubmit={submitReport}><button className="modal-close" type="button" onClick={() => setReportJob(null)}>×</button><p className="eyebrow">정보 제보</p><h2>{reportJob.company_name}</h2><label>요청 종류<select value={reportType} onChange={e => setReportType(e.target.value)}><option value="correction">정보 정정</option><option value="removal">삭제 요청</option></select></label><label>내용<textarea required minLength={5} value={message} onChange={e => setMessage(e.target.value)} placeholder="확인이 필요한 내용을 알려주세요." /></label><button className="primary">요청 접수</button></form></div>}
+    {feedbackTarget && <div className="modal-backdrop" role="presentation"><form className="report-modal" onSubmit={submitFeedback}><button className="modal-close" type="button" onClick={() => setFeedbackTarget(null)}>×</button><p className="eyebrow">추천 개인화</p><h2>{feedbackTarget.job.job_title}</h2><p className="modal-help">{feedbackTarget.decision === "interested" ? "어떤 점이 마음에 들었나요?" : feedbackTarget.decision === "not_interested" ? "어떤 점이 맞지 않았나요?" : "보류한 이유가 있다면 선택해 주세요."}</p><div className="reason-choices">{[["company", "회사"], ["job", "직무"], ["skill", "기술"], ["experience", "경력"], ["location", "지역"], ["employment_type", "고용형태"]].map(([value, label]) => <label key={value}><input type="checkbox" checked={feedbackReasons.includes(value)} onChange={() => toggleFeedbackReason(value)} />{label}</label>)}</div><button className="primary" disabled={feedbackBusy || (feedbackTarget.decision !== "hold" && feedbackReasons.length === 0)}>{feedbackBusy ? "추천 다시 계산 중…" : "피드백 저장"}</button></form></div>}
   </div>;
 }
 

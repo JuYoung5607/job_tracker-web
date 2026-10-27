@@ -8,7 +8,7 @@ from uuid import NAMESPACE_URL, uuid5
 
 import httpx
 
-from nodes.listing_searcher_node import _clear_mismatch_reason
+from nodes.searcher_node import _clear_mismatch_reason
 from nodes.page_fetcher import JobPageParser, _check_public_host
 from nodes.source_metrics import record_source_request
 from schemas.candidate import Candidate, CandidatePageType, SourceType
@@ -24,7 +24,7 @@ MAX_RESPONSE_BYTES = 1_000_000
 PositionFetcher = Callable[[str, int | None, int], dict]
 
 
-def make_jumpit_position_fetcher() -> PositionFetcher:
+def make_jumpit_position_fetcher(on_request_start: Callable[[], None] | None = None) -> PositionFetcher:
     """고정된 점핏 API 호스트만 조회합니다. 외부 URL은 입력받지 않습니다."""
 
     def fetch_positions(query: str, career: int | None, page: int) -> dict:
@@ -38,6 +38,8 @@ def make_jumpit_position_fetcher() -> PositionFetcher:
             params["career"] = career
 
         with httpx.Client(timeout=15.0, follow_redirects=False, trust_env=False) as client:
+            if on_request_start is not None:
+                on_request_start()
             with client.stream(
                 "GET", JUMPIT_API_URL, params=params,
                 headers={"User-Agent": "JobTracker/0.1"},

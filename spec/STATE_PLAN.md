@@ -11,7 +11,6 @@ LangGraph State는 한 번의 실행에 필요한 임시 데이터다. Job DB, F
 | run_id, started_at | str, datetime | 실행 식별·시간 |
 | search_conditions | SearchConditions | 사용자가 명시한 검색 범위 |
 | search_budget | SearchBudget | 최대 호출·후보·시간 |
-| search_plan | SearchPlan `| None` | Planner 출력 |
 | candidates | list[Candidate] | 검색 및 목록 확장으로 얻은 URL 후보 큐; 전체 고유 URL 상한 적용 |
 | candidate_cursor | int | 다음 처리 위치; 최초 0, 후보 처리 완료 시 증가 |
 | current_candidate | Candidate `| None` | 처리 중 후보 |

@@ -179,7 +179,9 @@ def parse_minimum_years(quote: str | None) -> int | None:
     if match:
         following = career_text[match.end():match.end() + 4]
         if "이하" in following or "미만" in following or "이내" in following:
-            return 0
+            # An upper bound is not evidence that entry-level applicants are
+            # accepted. Only an explicit "신입" makes the minimum zero.
+            return 0 if "신입" in career_text else None
         return int(match.group(1))
     if "신입" in career_text:
         return 0

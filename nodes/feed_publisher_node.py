@@ -4,12 +4,27 @@ import sqlite3
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
-from nodes.job_persister_node import SQLiteJobStore
+from nodes.job_store import SQLiteJobStore
 from nodes.ranker_node import _within_explicit_scope
 from personalization_state import PersonalizationState
 from schemas.matching import FeedItem, FeedResult
 from schemas.screening import ScreeningDecision
+
+
+def _shared_source_key(url: str) -> tuple[str, str] | None:
+    """Jumpit and Saramin share posting IDs for the same underlying listing."""
+    parts = urlsplit(url)
+    host = parts.hostname or ""
+    if host == "jumpit.saramin.co.kr":
+        segments = parts.path.rstrip("/").split("/")
+        posting_id = segments[-1] if len(segments) >= 3 and segments[-2] == "position" else ""
+    elif host in {"saramin.co.kr", "www.saramin.co.kr"}:
+        posting_id = parse_qs(parts.query).get("rec_idx", [""])[0]
+    else:
+        return None
+    return ("saramin", posting_id) if posting_id.isdigit() and len(posting_id) >= 7 else None
 
 
 class SQLiteFeedStore:
@@ -52,6 +67,7 @@ def make_feed_publisher_node(job_store: SQLiteJobStore, feed_store: SQLiteFeedSt
         screenings = {str(result.source_url): result
                       for result in state["screening_results"]}
         items: list[FeedItem] = []
+        seen_source_keys: set[tuple[str, str]] = set()
         for rank in state.get("rank_results", []):
             if rank.user_id != user_id:
                 continue
@@ -62,6 +78,11 @@ def make_feed_publisher_node(job_store: SQLiteJobStore, feed_store: SQLiteFeedSt
             if (screening is None or screening.decision == ScreeningDecision.EXCLUDED
                     or not _within_explicit_scope(job, screening, state["search_conditions"])):
                 continue
+            source_key = _shared_source_key(str(job.source_url))
+            if source_key is not None and source_key in seen_source_keys:
+                continue
+            if source_key is not None:
+                seen_source_keys.add(source_key)
             items.append(FeedItem(
                 job_id=job.job_id, job_version=job.result_version,
                 source_url=job.source_url, company_name=job.company_name,

@@ -1,0 +1,2649 @@
+[Run] 후보 발견 방식: 채용 플랫폼 현재 목록
+[Run] 원문·추출 과정 로그: C:\dev\job-tracker-web\logs\node-flow-20261027-154952.txt
+[Searcher] 호출 예산: HTML 목록 8회, 점핏 2회
+[Searcher] JobKorea 목록 1페이지 조회: AI Engineer 신입 주니어
+[Searcher] JobKorea 추가 후보 18건, 명백한 부적합 0건 제외 ({})
+[Searcher] Incruit 목록 1페이지 조회: AI Engineer
+[Searcher] Incruit 추가 후보 60건, 명백한 부적합 0건 제외 ({})
+[Searcher] Saramin 목록 1페이지 조회: AI Engineer
+[Searcher] Saramin 추가 후보 40건, 명백한 부적합 0건 제외 ({})
+[Searcher] JobKorea 목록 1페이지 조회: Embedded AI 신입 주니어
+[Searcher] JobKorea 추가 후보 0건, 명백한 부적합 0건 제외 ({})
+[Searcher] Incruit 목록 1페이지 조회: Embedded AI
+[Searcher] Incruit 추가 후보 3건, 명백한 부적합 2건 제외 ({'상위 직책 제목': 1, '경력자 전용 제목': 1})
+[Searcher] Saramin 목록 1페이지 조회: Embedded AI
+[Searcher] Saramin 추가 후보 39건, 명백한 부적합 0건 제외 ({})
+[Searcher] 후보 30건 선택
+[Jumpit Searcher] 목록 1페이지 조회: AI Engineer, 경력 필터=None
+[Jumpit Searcher] 추가 후보 12건, 제외 {'경력 상한 초과': 4}
+[Jumpit Searcher] 목록 1페이지 조회: Embedded AI, 경력 필터=None
+[Jumpit Searcher] 추가 후보 10건, 제외 {'경력 상한 초과': 6}
+[Jumpit Searcher] 후보 22건 선택 (호출 2건)
+[Searcher] 네 플랫폼 통합 후보 30건
+
+===== planner_node =====
+아래는 검증 전 URL 후보이며, 추천 공고가 아닙니다.
+
+--- candidate 1 ---
+{
+  "candidate_id": "36ed3f82-e59c-5af3-b01b-62b6e9c2dfe8",
+  "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50090095",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "JobKorea",
+  "discovery_source": "JobKorea current listing",
+  "discovered_at": "2026-10-27T06:49:56.175238Z",
+  "search_query": "AI Engineer 신입 주니어",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "AI 개발 연구원 채용 (신입 / 주니어 경력)",
+  "company_hint": null,
+  "parent_candidate_id": "8568ae67-d8a1-54bc-a456-04c92895f4dd",
+  "discovery_depth": 1
+}
+
+--- candidate 2 ---
+{
+  "candidate_id": "989da469-4c04-5dac-be72-b451fab1735c",
+  "url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Incruit",
+  "discovery_source": "Incruit current listing",
+  "discovered_at": "2026-10-27T06:49:59.399828Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "[IT] AI/ML 엔지니어",
+  "company_hint": null,
+  "parent_candidate_id": "33ab94ce-bed3-592a-b831-01a3677a0e22",
+  "discovery_depth": 1
+}
+
+--- candidate 3 ---
+{
+  "candidate_id": "d42ebc41-0173-54e1-a486-9b66ae920a8b",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55390190",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:00.885668Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "[전환형 인턴] GenOS AI Engineer 채용",
+  "company_hint": null,
+  "parent_candidate_id": "7c32f043-ba96-5c8a-b397-151244dc0433",
+  "discovery_depth": 1
+}
+
+--- candidate 4 ---
+{
+  "candidate_id": "7b71eec0-99d9-575d-ac26-b92bde8379b1",
+  "url": "https://jumpit.saramin.co.kr/position/55226542",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Jumpit",
+  "discovery_source": "Jumpit current listing",
+  "discovered_at": "2026-10-27T06:50:05.435591Z",
+  "search_query": "AI Engineer",
+  "search_track": "점핏 현재 채용 목록 직접 탐색",
+  "title_hint": "Energy AI Team/FullStack AI Engineer",
+  "company_hint": "브이젠",
+  "parent_candidate_id": null,
+  "discovery_depth": 0
+}
+
+--- candidate 5 ---
+{
+  "candidate_id": "7bf5b03d-2974-5aee-8e23-4d761b36a184",
+  "url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2609300000830",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Incruit",
+  "discovery_source": "Incruit current listing",
+  "discovered_at": "2026-10-27T06:50:02.849626Z",
+  "search_query": "Embedded AI",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "[일본 현지 근무 / CAL] IT 엔지니어 신입사원 채용/ *비전공자, 신입 대환영",
+  "company_hint": null,
+  "parent_candidate_id": "ec7f0cc2-3c8a-5c6c-9b58-c8cdc010596f",
+  "discovery_depth": 1
+}
+
+--- candidate 6 ---
+{
+  "candidate_id": "7c77a042-6cd7-5e33-a54b-cc046f185041",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55350828",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:04.779319Z",
+  "search_query": "Embedded AI",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "2026년 하반기 한온시스템 채용연계형 인턴십",
+  "company_hint": null,
+  "parent_candidate_id": "626e4ceb-f255-5f42-995c-6d4ad7b18514",
+  "discovery_depth": 1
+}
+
+--- candidate 7 ---
+{
+  "candidate_id": "9cf30ccd-a075-5dfd-b820-b37ca9d4f69e",
+  "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50074176",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "JobKorea",
+  "discovery_source": "JobKorea current listing",
+  "discovered_at": "2026-10-27T06:49:56.175753Z",
+  "search_query": "AI Engineer 신입 주니어",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "[INEEJI] 하반기 분야별 인재 채용",
+  "company_hint": null,
+  "parent_candidate_id": "8568ae67-d8a1-54bc-a456-04c92895f4dd",
+  "discovery_depth": 1
+}
+
+--- candidate 8 ---
+{
+  "candidate_id": "37c16941-5b9a-55c3-90b0-bb542429f486",
+  "url": "https://jumpit.saramin.co.kr/position/55159154",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Jumpit",
+  "discovery_source": "Jumpit current listing",
+  "discovered_at": "2026-10-27T06:50:05.987194Z",
+  "search_query": "Embedded AI",
+  "search_track": "점핏 현재 채용 목록 직접 탐색",
+  "title_hint": "웹 개발자 채용[신입]",
+  "company_hint": "건강누리",
+  "parent_candidate_id": null,
+  "discovery_depth": 0
+}
+
+--- candidate 9 ---
+{
+  "candidate_id": "1e494b7a-51cf-5c00-a7b6-56914a16dbee",
+  "url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610160000820",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Incruit",
+  "discovery_source": "Incruit current listing",
+  "discovered_at": "2026-10-27T06:49:59.399828Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "한국어 AI 대화 디자이너를 찾습니다",
+  "company_hint": null,
+  "parent_candidate_id": "33ab94ce-bed3-592a-b831-01a3677a0e22",
+  "discovery_depth": 1
+}
+
+--- candidate 10 ---
+{
+  "candidate_id": "fb7ecc52-275f-5fa9-baff-7bdc23f164c1",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300868",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:00.885668Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "[신입/경력] AI Engineer",
+  "company_hint": null,
+  "parent_candidate_id": "7c32f043-ba96-5c8a-b397-151244dc0433",
+  "discovery_depth": 1
+}
+
+--- candidate 11 ---
+{
+  "candidate_id": "699987cf-2eff-5bd8-a0af-9bc34cb69c0d",
+  "url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Incruit",
+  "discovery_source": "Incruit current listing",
+  "discovered_at": "2026-10-27T06:50:02.849626Z",
+  "search_query": "Embedded AI",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "AI/LLM 기반 Software 개발/(신입,경력) - 모빌리티 스타트업",
+  "company_hint": null,
+  "parent_candidate_id": "ec7f0cc2-3c8a-5c6c-9b58-c8cdc010596f",
+  "discovery_depth": 1
+}
+
+--- candidate 12 ---
+{
+  "candidate_id": "572071ea-bec1-56d1-94dd-72823dd7f099",
+  "url": "https://jumpit.saramin.co.kr/position/55328047",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Jumpit",
+  "discovery_source": "Jumpit current listing",
+  "discovered_at": "2026-10-27T06:50:05.435591Z",
+  "search_query": "AI Engineer",
+  "search_track": "점핏 현재 채용 목록 직접 탐색",
+  "title_hint": "Physical AI Research Engineer (전문연 가능)",
+  "company_hint": "플라잎",
+  "parent_candidate_id": null,
+  "discovery_depth": 0
+}
+
+--- candidate 13 ---
+{
+  "candidate_id": "9d1327d9-8860-5d7d-8652-63bb8264262a",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55249092",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:04.779319Z",
+  "search_query": "Embedded AI",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "개발자 [AI·IOT ] [APP/WEB]",
+  "company_hint": null,
+  "parent_candidate_id": "626e4ceb-f255-5f42-995c-6d4ad7b18514",
+  "discovery_depth": 1
+}
+
+--- candidate 14 ---
+{
+  "candidate_id": "b5e6d750-7e68-59d7-88f6-5b8a0162cfbc",
+  "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50142477",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "JobKorea",
+  "discovery_source": "JobKorea current listing",
+  "discovered_at": "2026-10-27T06:49:56.175753Z",
+  "search_query": "AI Engineer 신입 주니어",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "AIR 부문 AI 전문 Engineer 채용 (경력)",
+  "company_hint": null,
+  "parent_candidate_id": "8568ae67-d8a1-54bc-a456-04c92895f4dd",
+  "discovery_depth": 1
+}
+
+--- candidate 15 ---
+{
+  "candidate_id": "be33f320-a458-5313-8262-b7cf1ed56e01",
+  "url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Incruit",
+  "discovery_source": "Incruit current listing",
+  "discovered_at": "2026-10-27T06:49:59.399828Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "AI 개발자 채용공고",
+  "company_hint": null,
+  "parent_candidate_id": "33ab94ce-bed3-592a-b831-01a3677a0e22",
+  "discovery_depth": 1
+}
+
+--- candidate 16 ---
+{
+  "candidate_id": "99666646-9a59-514b-bc64-da9b3fa0c4a0",
+  "url": "https://jumpit.saramin.co.kr/position/55149737",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Jumpit",
+  "discovery_source": "Jumpit current listing",
+  "discovered_at": "2026-10-27T06:50:05.987194Z",
+  "search_query": "Embedded AI",
+  "search_track": "점핏 현재 채용 목록 직접 탐색",
+  "title_hint": "정보지원팀 iBiz Java 개발자 채용",
+  "company_hint": "인젠트",
+  "parent_candidate_id": null,
+  "discovery_depth": 0
+}
+
+--- candidate 17 ---
+{
+  "candidate_id": "c8e5ade0-4cdb-5a91-b4f7-96455c0e565c",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55242853",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:00.885668Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "AI Agent Engineer(LLM · TypeScript) [신입]",
+  "company_hint": null,
+  "parent_candidate_id": "7c32f043-ba96-5c8a-b397-151244dc0433",
+  "discovery_depth": 1
+}
+
+--- candidate 18 ---
+{
+  "candidate_id": "5c5bb5f1-a857-5ef7-a4eb-a5fd0614b99d",
+  "url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000147",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Incruit",
+  "discovery_source": "Incruit current listing",
+  "discovered_at": "2026-10-27T06:50:02.849626Z",
+  "search_query": "Embedded AI",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "SDV Platform SW 개발/(신입,경력)/(Linux) - 모빌리티 스타트업",
+  "company_hint": null,
+  "parent_candidate_id": "ec7f0cc2-3c8a-5c6c-9b58-c8cdc010596f",
+  "discovery_depth": 1
+}
+
+--- candidate 19 ---
+{
+  "candidate_id": "5294806c-e030-5dee-af5f-fa6b546e5a3f",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:04.779319Z",
+  "search_query": "Embedded AI",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "AI기반 가상머신개발AX(신입)",
+  "company_hint": null,
+  "parent_candidate_id": "626e4ceb-f255-5f42-995c-6d4ad7b18514",
+  "discovery_depth": 1
+}
+
+--- candidate 20 ---
+{
+  "candidate_id": "0553e79b-ba82-5aa8-a174-79af7b19f21f",
+  "url": "https://jumpit.saramin.co.kr/position/55242888",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Jumpit",
+  "discovery_source": "Jumpit current listing",
+  "discovered_at": "2026-10-27T06:50:05.435591Z",
+  "search_query": "AI Engineer",
+  "search_track": "점핏 현재 채용 목록 직접 탐색",
+  "title_hint": "AI Agent Engineer(LLM · TypeScript)",
+  "company_hint": "이우소프트",
+  "parent_candidate_id": null,
+  "discovery_depth": 0
+}
+
+--- candidate 21 ---
+{
+  "candidate_id": "93107446-d5c2-553c-b96a-da83a217f03e",
+  "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50082655",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "JobKorea",
+  "discovery_source": "JobKorea current listing",
+  "discovered_at": "2026-10-27T06:49:56.175753Z",
+  "search_query": "AI Engineer 신입 주니어",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "2026년 하반기 각 부문별 신입/경력 채용공고",
+  "company_hint": null,
+  "parent_candidate_id": "8568ae67-d8a1-54bc-a456-04c92895f4dd",
+  "discovery_depth": 1
+}
+
+--- candidate 22 ---
+{
+  "candidate_id": "f4bdb33d-bde0-5db0-8dc1-77473bcc2cca",
+  "url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000014",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Incruit",
+  "discovery_source": "Incruit current listing",
+  "discovered_at": "2026-10-27T06:49:59.400829Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "금융본부 LLM/Data Engineer 채용",
+  "company_hint": null,
+  "parent_candidate_id": "33ab94ce-bed3-592a-b831-01a3677a0e22",
+  "discovery_depth": 1
+}
+
+--- candidate 23 ---
+{
+  "candidate_id": "b4b36d97-a884-50d1-9d46-e6c89b0510ad",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300900",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:00.885668Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "[신입/경력] AI Platform Engineer",
+  "company_hint": null,
+  "parent_candidate_id": "7c32f043-ba96-5c8a-b397-151244dc0433",
+  "discovery_depth": 1
+}
+
+--- candidate 24 ---
+{
+  "candidate_id": "07b49e66-05ba-570e-a6f1-229738e7dd37",
+  "url": "https://jumpit.saramin.co.kr/position/55242193",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Jumpit",
+  "discovery_source": "Jumpit current listing",
+  "discovered_at": "2026-10-27T06:50:05.987194Z",
+  "search_query": "Embedded AI",
+  "search_track": "점핏 현재 채용 목록 직접 탐색",
+  "title_hint": "백엔드 개발자",
+  "company_hint": "와탭랩스",
+  "parent_candidate_id": null,
+  "discovery_depth": 0
+}
+
+--- candidate 25 ---
+{
+  "candidate_id": "22c2b716-d219-5495-9286-07f129980b5d",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:04.785912Z",
+  "search_query": "Embedded AI",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "[신입/정규직] HW, 임베디드, SW 개발 엔지니어 채용",
+  "company_hint": null,
+  "parent_candidate_id": "626e4ceb-f255-5f42-995c-6d4ad7b18514",
+  "discovery_depth": 1
+}
+
+--- candidate 26 ---
+{
+  "candidate_id": "8a0fe010-0aa7-537b-a9eb-55831b990049",
+  "url": "https://www.jobkorea.co.kr/Recruit/GI_Read/49991551",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "JobKorea",
+  "discovery_source": "JobKorea current listing",
+  "discovered_at": "2026-10-27T06:49:56.175753Z",
+  "search_query": "AI Engineer 신입 주니어",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "전자기장 해석 Pre-Sales 엔지니어 (주니어) 신규/경력 채용",
+  "company_hint": null,
+  "parent_candidate_id": "8568ae67-d8a1-54bc-a456-04c92895f4dd",
+  "discovery_depth": 1
+}
+
+--- candidate 27 ---
+{
+  "candidate_id": "18f553c6-7ed8-54be-beb3-4d8330601cae",
+  "url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000069",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Incruit",
+  "discovery_source": "Incruit current listing",
+  "discovered_at": "2026-10-27T06:49:59.400829Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "LLM Research Engineer (Post-training) (신입/경력)",
+  "company_hint": null,
+  "parent_candidate_id": "33ab94ce-bed3-592a-b831-01a3677a0e22",
+  "discovery_depth": 1
+}
+
+--- candidate 28 ---
+{
+  "candidate_id": "c963ad4c-acf4-557b-9201-c8501a924401",
+  "url": "https://jumpit.saramin.co.kr/position/55366656",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Jumpit",
+  "discovery_source": "Jumpit current listing",
+  "discovered_at": "2026-10-27T06:50:05.435591Z",
+  "search_query": "AI Engineer",
+  "search_track": "점핏 현재 채용 목록 직접 탐색",
+  "title_hint": "AI Native Back-end Engineer",
+  "company_hint": "올거나이즈코리아",
+  "parent_candidate_id": null,
+  "discovery_depth": 0
+}
+
+--- candidate 29 ---
+{
+  "candidate_id": "0bce14c9-8c8c-5386-bd91-30cf13c9bc51",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55377393",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:00.885668Z",
+  "search_query": "AI Engineer",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "석박사 AI Research Engineer (Vision & NLP)",
+  "company_hint": null,
+  "parent_candidate_id": "7c32f043-ba96-5c8a-b397-151244dc0433",
+  "discovery_depth": 1
+}
+
+--- candidate 30 ---
+{
+  "candidate_id": "653a59cc-518f-550d-ab68-b6d7cd345cd3",
+  "url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55319893",
+  "page_type": "job_detail",
+  "source_type": "job_platform",
+  "source_name": "Saramin",
+  "discovery_source": "Saramin current listing",
+  "discovered_at": "2026-10-27T06:50:04.785912Z",
+  "search_query": "Embedded AI",
+  "search_track": "현재 채용 목록 직접 탐색",
+  "title_hint": "AI/LLM 기반 S/W 개발/(신입) - Mobility Startup",
+  "company_hint": null,
+  "parent_candidate_id": "626e4ceb-f255-5f42-995c-6d4ad7b18514",
+  "discovery_depth": 1
+}
+
+===== candidate_iterator_node =====
+cursor: 0
+current: https://www.jobkorea.co.kr/Recruit/GI_Read/50090095
+[Job Lookup] https://www.jobkorea.co.kr/Recruit/GI_Read/50090095: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='이삭엔지니어링㈜ 채용 - AI 개발 연구원 채용 (신입 / 주니어 경력) | 잡코리아', 본문=754자, 링크=12건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=False, 지원 버튼/링크=False, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '구조화 데이터 공고 마감일: 2026-10-31T23:59 이삭엔지니어링㈜ 채용 - AI 개발 연구원 채용 (신입 / 주니어 경력) | 잡코리아 회원가입/로그인 기업 서비스 JOB 찾기 합격축하금 공채정보 신입·인턴 기업·연봉 콘텐츠 취업톡톡 이삭엔지니어링㈜ AI 개발 연구원 채용 (신'
+[Navigator] 잡코리아 상세 본문 조회: https://www.jobkorea.co.kr/Recruit/GI_Read_Comt_Ifrm?Gno=50090095
+[Navigator] 잡코리아 상세 본문 1403자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:50:14.468987Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=이삭엔지니어링㈜, 원문=https://www.jobkorea.co.kr/Recruit/GI_Read/50090095
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 이삭엔지니어링㈜: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.jobkorea.co.kr/Recruit/GI_Read/50090095 경력_원본='신입 또는 AI 관련 실무 경력 5년 이내' 경력_확인='신입 또는 AI 관련 실무 경력 5년 이내' 경력_위치=상세 경력_파싱=0 경력_근거=minimum_years 마감='마감일 2026.10.31(토)' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.jobkorea.co.kr/Recruit/GI_Read/50090095, job_title='AI 개발 연구원', role_relation=related, role_evidence='AI 개발 연구원 채용 (신입/ 주니어 경력) 담당업무', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "36ed3f82-e59c-5af3-b01b-62b6e9c2dfe8",
+  "source_url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50090095",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-10-31",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "7214afbe-abb7-5bf0-8396-bdb8a2742fae",
+    "ec06b11d-25ab-5795-802e-4613336793f4",
+    "50a59b3b-6643-5823-8952-1f5d4527c9f8"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:d6ab658e1086c68b9092ba55701dbb045a07f66b2003e76211205507dc5563ea, 새 해시=v2:d6ab658e1086c68b9092ba55701dbb045a07f66b2003e76211205507dc5563ea
+[Lifecycle][추출값 차이] employment_type: 기존='계약직' → 새값='계약직 (근무기간 3개월, 정규직 전환 가능)'
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=['employment_type'], 기존값 보존=True; 원문은 동일하지만 추출값이 달라 기존값을 보존하고 검토 대상으로 기록했습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "원문은 동일하지만 추출값이 달라 기존값을 보존하고 검토 대상으로 기록했습니다.",
+  "changed_fields": [],
+  "review_fields": [
+    "employment_type"
+  ],
+  "should_publish": false,
+  "should_preserve_existing": true
+}
+[Job Persister] https://www.jobkorea.co.kr/Recruit/GI_Read/50090095: active, 버전=2
+
+===== job_persister_node =====
+저장 공고 ID: d73837d5-16d5-5c85-9975-bc16de4c659f
+
+===== candidate_iterator_node =====
+cursor: 1
+current: https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059
+[Job Lookup] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='비상교육 채용 : [IT] AI/ML 엔지니어 채용 - 인크루트 채용정보', 본문=3602자, 링크=263건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '비상교육 채용 : [IT] AI/ML 엔지니어 채용 - 인크루트 채용정보 인크루트 1 서울평가정보(주) 2 수협회원조합 3 용인특례시 4 서울교통공사 5 서일대학교 6 쿠팡로지스틱스서비스(유) 7 현대스틸산업(주) 8 한국전자기술연구원 9 여수광양항만공사 10 한국건강증진개발원 1 서울'
+[Navigator] 인크루트 상세 iframe 조회: https://job.incruit.com/s_common/jobpost/jobpostcont.asp?job=2610200000059
+[Navigator] 인크루트 상세 본문 897자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:50:20.140110Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=(주)비상교육, 원문=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] (주)비상교육: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059 경력_원본='지원 자격은 대졸(4년제) 이상의 학력을 갖춘 신입을 대상으로 하며' 경력_확인='지원 자격은 대졸(4년제) 이상의 학력을 갖춘 신입을 대상으로 하며' 경력_위치=상세 경력_파싱=0 경력_근거=minimum_years 마감='' 상태='진행중인 채용정보 더보기 [IT] AI/ML 엔지니어 스크랩 경기 l 정규직 l 신입' 지원표시='채용시' 복수포지션=False
+[Verifier] 직무 판단: url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059, job_title='AI/ML 엔지니어', role_relation=related, role_evidence='AI/ML 엔지니어', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['채용시 표시와 홈페이지 지원 버튼을 확인했습니다.', '모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "989da469-4c04-5dac-be72-b451fab1735c",
+  "source_url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059",
+  "decision": "eligible",
+  "reasons": [
+    "채용시 표시와 홈페이지 지원 버튼을 확인했습니다.",
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": null,
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "3a747e64-fb62-56a0-82a8-e7272cc22f2b",
+    "1b15c207-4c8e-57c3-a805-f943dcf049fc",
+    "80ba45b4-a731-5862-9b30-22bdb96e65cc",
+    "c5d6c5f4-d1c3-5621-9f92-f2fdc620a0c6"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:96d019d958327361d74413600c98551802bd233e0bd4535bc4544ba1bdf7f424, 새 해시=v2:96d019d958327361d74413600c98551802bd233e0bd4535bc4544ba1bdf7f424
+[Lifecycle][추출값 차이] employment_type: 기존='None' → 새값='정규직'
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=['employment_type'], 기존값 보존=True; 원문은 동일하지만 추출값이 달라 기존값을 보존하고 검토 대상으로 기록했습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "원문은 동일하지만 추출값이 달라 기존값을 보존하고 검토 대상으로 기록했습니다.",
+  "changed_fields": [],
+  "review_fields": [
+    "employment_type"
+  ],
+  "should_publish": false,
+  "should_preserve_existing": true
+}
+[Job Persister] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 989da469-4c04-5dac-be72-b451fab1735c
+
+===== candidate_iterator_node =====
+cursor: 2
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55390190
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55390190: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[(주)제논] [전환형 인턴] GenOS AI Engineer 채용(D-29) - 사람인', 본문=6165자, 링크=170건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[(주)제논] [전환형 인턴] GenOS AI Engineer 채용(D-29) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형) 인적성 · 평가도구 채용상품 '
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=55390190
+[Navigator] 사람인 상세 본문 895자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:50:27.185826Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=(주)제논, 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55390190
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] (주)제논: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][마감일 충돌] 추출='마감일 2026.11.25 23:59', 원문 날짜=[datetime.date(2026, 11, 25)]
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55390190 경력_원본='학사 졸업자 및 졸업예정자' 경력_확인='학사 졸업자 및 졸업예정자' 경력_위치=상세+외부 경력_파싱=None 경력_근거=None 마감='마감일 2026.11.25 23:59' 상태='접수기간 : 채용시 마감' 지원표시='D-29' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55390190, job_title='GenOS AI Engineer', role_relation=related, role_evidence='GenOS AI Engineer', 근거 등록=True
+[Verifier][최종] 판정=review, 최소경력=None, 경력근거=None, 이유=['경력 조건의 의미가 불분명합니다.', '원문의 마감일 표기가 서로 충돌해 확인이 필요합니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "d42ebc41-0173-54e1-a486-9b66ae920a8b",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55390190",
+  "decision": "review",
+  "reasons": [
+    "경력 조건의 의미가 불분명합니다.",
+    "원문의 마감일 표기가 서로 충돌해 확인이 필요합니다."
+  ],
+  "closing_date": null,
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": [
+    "9492def9-7d87-50b8-a652-aa418831b998",
+    "dc965808-e70b-542b-9b09-c4b8682943d7",
+    "a3db68cd-3457-555d-8177-13c0bbfaf358",
+    "486e7161-4dd4-5dd5-8c69-c102d6cc7385",
+    "dd70ea13-3b67-5ba0-a9c1-fefa6e69019a"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:5af3b86e20ef165ea4dce6b531781571841cd6dba0a8b381ce2be830c63cde82, 새 해시=v2:5af3b86e20ef165ea4dce6b531781571841cd6dba0a8b381ce2be830c63cde82
+[Lifecycle][근거 충돌] closes_at: 기존 저장값='None', 새 추출값='None'; 기존값 보존, 자동 변경 없음
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=['closes_at'], 기존값 보존=True; 원문의 근거가 충돌해 기존값을 보존하고 검토 대상으로 기록했습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "원문의 근거가 충돌해 기존값을 보존하고 검토 대상으로 기록했습니다.",
+  "changed_fields": [],
+  "review_fields": [
+    "closes_at"
+  ],
+  "should_publish": false,
+  "should_preserve_existing": true
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55390190: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: e2a75bcf-c9d9-5a6f-b54f-669d387bad37
+
+===== candidate_iterator_node =====
+cursor: 3
+current: https://jumpit.saramin.co.kr/position/55226542
+[Job Lookup] https://jumpit.saramin.co.kr/position/55226542: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='점핏 | Energy AI Team/FullStack AI Engineer', 본문=2722자, 링크=15건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '점핏 | Energy AI Team/FullStack AI Engineer 회원가입/로그인 개발자 채용 이력서 #꿀 피드 개발자 인터뷰 회원가입/로그인 기업 서비스 Energy AI Team/FullStack AI Engineer 브이젠 💰 취업축하금 50만원 📈 급성장중 💰 매출액 2'
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:50:30.865997Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=브이젠, 원문=https://jumpit.saramin.co.kr/position/55226542
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 브이젠: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://jumpit.saramin.co.kr/position/55226542 경력_원본='경력 3~10년 학력 무관' 경력_확인='경력 3~10년 학력 무관' 경력_위치=미확인 경력_파싱=3 경력_근거=minimum_years 마감='마감일 2026-11-12' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://jumpit.saramin.co.kr/position/55226542, job_title='Energy AI Team/FullStack AI Engineer', role_relation=related, role_evidence='Energy AI Team/FullStack AI Engineer', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=3, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "7b71eec0-99d9-575d-ac26-b92bde8379b1",
+  "source_url": "https://jumpit.saramin.co.kr/position/55226542",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-11-12",
+  "minimum_experience_years": 3,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "99923af9-8895-5c0e-a0c2-a71da780adc7",
+    "bf6bbe84-23d1-5ce9-84a3-8f5441d3b660",
+    "8d053fa6-f872-5a60-b1c5-8edc463d783b"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:32558bdf530b4294eac6aa8dffc5aeaed75933123f7ee71fdc8720736678e5bf, 새 해시=v2:32558bdf530b4294eac6aa8dffc5aeaed75933123f7ee71fdc8720736678e5bf
+[Lifecycle][추출값 차이] company_name: 기존='VGen' → 새값='브이젠'
+[Lifecycle][추출값 차이] job_title: 기존='FullStack AI Engineer' → 새값='Energy AI Team/FullStack AI Engineer'
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=['company_name', 'job_title'], 기존값 보존=True; 원문은 동일하지만 추출값이 달라 기존값을 보존하고 검토 대상으로 기록했습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "원문은 동일하지만 추출값이 달라 기존값을 보존하고 검토 대상으로 기록했습니다.",
+  "changed_fields": [],
+  "review_fields": [
+    "company_name",
+    "job_title"
+  ],
+  "should_publish": false,
+  "should_preserve_existing": true
+}
+[Job Persister] https://jumpit.saramin.co.kr/position/55226542: active, 버전=3
+
+===== job_persister_node =====
+저장 공고 ID: 7b71eec0-99d9-575d-ac26-b92bde8379b1
+
+===== candidate_iterator_node =====
+cursor: 4
+current: https://job.incruit.com/jobdb_info/jobpost.asp?job=2609300000830
+[Job Lookup] https://job.incruit.com/jobdb_info/jobpost.asp?job=2609300000830: 신규 후보
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='칼 영업소 채용 : [일본 현지 근무 / CAL] IT 엔지니어 신입사원 채용/ *비전공자, 신입 대환영 - 인크루트 채용정보', 본문=3994자, 링크=257건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '구조화 데이터 공고 마감일: 2026-10-30T23:59:59+09:00 칼 영업소 채용 : [일본 현지 근무 / CAL] IT 엔지니어 신입사원 채용/ *비전공자, 신입 대환영 - 인크루트 채용정보 인크루트 1 서울평가정보(주) 2 수협회원조합 3 용인특례시 4 서울교통공사 5 서일'
+[Navigator] 인크루트 상세 iframe 조회: https://job.incruit.com/s_common/jobpost/jobpostcont.asp?job=2609300000830
+[Navigator] 상세 본문 미확인 → review: 인크루트 상세 iframe 본문을 확인하지 못했습니다.
+
+===== navigator_node =====
+{
+  "candidate_id": "7bf5b03d-2974-5aee-8e23-4d761b36a184",
+  "source_url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2609300000830",
+  "decision": "review",
+  "reasons": [
+    "인크루트 상세 iframe 본문을 확인하지 못했습니다."
+  ],
+  "closing_date": null,
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": []
+}
+
+===== candidate_iterator_node =====
+cursor: 5
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55350828
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55350828: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[한온시스템(주)] 2026년 하반기 한온시스템 채용연계형 인턴십(D-5) - 사람인', 본문=4805자, 링크=169건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[한온시스템(주)] 2026년 하반기 한온시스템 채용연계형 인턴십(D-5) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형) 인적성 · 평가도구 채용상품 사람'
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=55350828
+[Navigator] 사람인 상세 본문 51자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:50:38.135596Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=한온시스템(주), 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55350828
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 한온시스템(주): 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55350828 경력_원본='경력 신입' 경력_확인='경력 신입' 경력_위치=외부 경력_파싱=0 경력_근거=minimum_years 마감='마감일 2026.11.01 23:00' 상태='한온시스템(주) 관심기업 채용중' 지원표시='D-5' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55350828, job_title='채용연계형 인턴십', role_relation=unrelated, role_evidence='채용연계형 인턴십', 근거 등록=True
+[Verifier][최종] 판정=excluded, 최소경력=0, 경력근거=minimum_years, 이유=['실제 모집 직무가 목표 직무와 다릅니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "7c77a042-6cd7-5e33-a54b-cc046f185041",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55350828",
+  "decision": "excluded",
+  "reasons": [
+    "실제 모집 직무가 목표 직무와 다릅니다."
+  ],
+  "closing_date": "2026-11-01",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "cc89d863-570e-5462-8b45-09a81434f1e9",
+    "bd947dfa-f995-5647-9de1-8ec655b94a2f",
+    "07ddcec2-a5cf-50cf-99b4-298315d3f92e",
+    "6f4bc57c-ede8-5791-8beb-086ede67e27b",
+    "1dff82bb-d4ff-500f-a715-d596a92d1a2a"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:febcd8be4f66d47f7074576553222df7e3a4b16b8fd5ccd704e695af872a8aa7, 새 해시=v2:febcd8be4f66d47f7074576553222df7e3a4b16b8fd5ccd704e695af872a8aa7
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55350828: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 8e6b9212-0b38-5e58-bc17-0d34eb2954fe
+
+===== candidate_iterator_node =====
+cursor: 6
+current: https://www.jobkorea.co.kr/Recruit/GI_Read/50074176
+[Job Lookup] https://www.jobkorea.co.kr/Recruit/GI_Read/50074176: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='㈜인이지 채용 - [INEEJI] 하반기 분야별 인재 채용 | 잡코리아', 본문=1119자, 링크=12건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=False, 지원 버튼/링크=False, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '구조화 데이터 공고 마감일: 2026-10-29T23:59 ㈜인이지 채용 - [INEEJI] 하반기 분야별 인재 채용 | 잡코리아 회원가입/로그인 기업 서비스 JOB 찾기 합격축하금 공채정보 신입·인턴 기업·연봉 콘텐츠 취업톡톡 ㈜인이지 [INEEJI] 하반기 분야별 인재 채용 상세요강'
+[Navigator] 잡코리아 상세 본문 조회: https://www.jobkorea.co.kr/Recruit/GI_Read_Comt_Ifrm?Gno=50074176
+[Navigator] 잡코리아 상세 본문 12744자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=㈜인이지, 원문=https://www.jobkorea.co.kr/Recruit/GI_Read/50074176
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] ㈜인이지: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.jobkorea.co.kr/Recruit/GI_Read/50074176 경력_원본='경력: 3년 경력 이상 또는 AI 전공 석사 이상' 경력_확인='경력: 3년 경력 이상 또는 AI 전공 석사 이상' 경력_위치=상세 경력_파싱=3 경력_근거=minimum_years 마감='마감일 2026.10.29(목)' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.jobkorea.co.kr/Recruit/GI_Read/50074176, job_title='데이터분석가/ AI엔지니어', role_relation=related, role_evidence='데이터분석가/ AI엔지니어', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=3, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "9cf30ccd-a075-5dfd-b820-b37ca9d4f69e",
+  "source_url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50074176",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-10-29",
+  "minimum_experience_years": 3,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "8e88962c-d5e2-5bfc-b32f-353b36193b7b",
+    "fc64c6a1-99ba-5794-acfc-dc2d5fd37fa4",
+    "427620dd-2a90-5fb7-9828-a062708862f0"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:a58e0eaa6367e3715cb674417de93d4afd38feea7e56da0eb066d84a50a182de, 새 해시=v2:a58e0eaa6367e3715cb674417de93d4afd38feea7e56da0eb066d84a50a182de
+[Lifecycle][추출값 차이] employment_type: 기존='정규직/계약직(1년 후 정규직 심사)' → 새값='정규직 (수습 3개월) , 계약직 (근무기간 1년, 정규직 전환 가능)'
+[Lifecycle][추출값 차이] location: 기존="['강남오피스(서울특별시 강남구 역삼동 834-66, 이루미빌딩 2층), 부산오피스(부산광역시 부산진구 동천로 73, 디에스타워), 분당오피스(경기도 성남시 분당구 성남대로331번길 8 14층)']" → 새값="['경기 성남시 분당구 성남대로331번길 8  (정자동) 킨스타워 1402호']"
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=['employment_type', 'location'], 기존값 보존=True; 원문은 동일하지만 추출값이 달라 기존값을 보존하고 검토 대상으로 기록했습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "원문은 동일하지만 추출값이 달라 기존값을 보존하고 검토 대상으로 기록했습니다.",
+  "changed_fields": [],
+  "review_fields": [
+    "employment_type",
+    "location"
+  ],
+  "should_publish": false,
+  "should_preserve_existing": true
+}
+[Job Persister] https://www.jobkorea.co.kr/Recruit/GI_Read/50074176: active, 버전=2
+
+===== job_persister_node =====
+저장 공고 ID: ab793f90-eb0a-54c7-aa47-291684f8da56
+
+===== candidate_iterator_node =====
+cursor: 7
+current: https://jumpit.saramin.co.kr/position/55159154
+[Job Lookup] https://jumpit.saramin.co.kr/position/55159154: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='점핏 | 웹 개발자 채용[신입]', 본문=684자, 링크=11건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '점핏 | 웹 개발자 채용[신입] 회원가입/로그인 개발자 채용 이력서 #꿀 피드 개발자 인터뷰 회원가입/로그인 기업 서비스 웹 개발자 채용[신입] 건강누리 💰 취업축하금 50만원 포지션 상세 정보 기술스택 HTML5 JavaScript Uniform CSS 주요업무 • AI 기술기반 의료'
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=건강누리, 원문=https://jumpit.saramin.co.kr/position/55159154
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 건강누리: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://jumpit.saramin.co.kr/position/55159154 경력_원본='경력 신입' 경력_확인='경력 신입' 경력_위치=미확인 경력_파싱=0 경력_근거=minimum_years 마감='마감일 2026-10-29' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://jumpit.saramin.co.kr/position/55159154, job_title='웹 개발자', role_relation=unrelated, role_evidence='웹 개발자 채용[신입]', 근거 등록=True
+[Verifier][최종] 판정=excluded, 최소경력=0, 경력근거=minimum_years, 이유=['실제 모집 직무가 목표 직무와 다릅니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "37c16941-5b9a-55c3-90b0-bb542429f486",
+  "source_url": "https://jumpit.saramin.co.kr/position/55159154",
+  "decision": "excluded",
+  "reasons": [
+    "실제 모집 직무가 목표 직무와 다릅니다."
+  ],
+  "closing_date": "2026-10-29",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "6f8aaf8f-33e5-53ff-8482-300806535f11",
+    "b1abaded-b4c7-5edd-bce1-9a7a537c7280",
+    "d399eb1b-482a-58a9-b13b-6e324be28680"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:eab6591851cb59f1bdca6436074a97eaf25d016884f5b75e0874354fb9a619e0, 새 해시=v2:eab6591851cb59f1bdca6436074a97eaf25d016884f5b75e0874354fb9a619e0
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://jumpit.saramin.co.kr/position/55159154: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 37c16941-5b9a-55c3-90b0-bb542429f486
+
+===== candidate_iterator_node =====
+cursor: 8
+current: https://job.incruit.com/jobdb_info/jobpost.asp?job=2610160000820
+[Job Lookup] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610160000820: 신규 후보
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='다이얼로그디자인에이전시 Dialogue Design Agency Inc 채용 : 한국어 AI 대화 디자이너를 찾습니다 채용 - 인크루트 채용정보', 본문=4469자, 링크=269건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '다이얼로그디자인에이전시 Dialogue Design Agency Inc 채용 : 한국어 AI 대화 디자이너를 찾습니다 채용 - 인크루트 채용정보 인크루트 1 서울평가정보(주) 2 수협회원조합 3 용인특례시 4 서울교통공사 5 서일대학교 6 쿠팡로지스틱스서비스(유) 7 현대스틸산업(주) '
+[Navigator] 인크루트 상세 iframe 조회: https://job.incruit.com/s_common/jobpost/jobpostcont.asp?job=2610160000820
+[Navigator] 인크루트 상세 본문 2203자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=주식회사 다이얼로그디자인에이전시 (Dialogue Design Agency Inc.), 원문=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610160000820
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 주식회사 다이얼로그디자인에이전시 (Dialogue Design Agency Inc.): 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610160000820 경력_원본='신입 또는 유관 분야 경력 3년 이상 ( 심화 리서치, 서비스 플로우, 시나리오 설계, 서비스 기획, UX 라이팅 등 )' 경력_확인='신입 또는 유관 분야 경력 3년 이상 ( 심화 리서치, 서비스 플로우, 시나리오 설계, 서비스 기획, UX 라이팅 등 )' 경력_위치=상세 경력_파싱=3 경력_근거=minimum_years 마감='' 상태='접수기간 및 방법 상시채용' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610160000820, job_title='한국어 AI 대화 디자이너', role_relation=unrelated, role_evidence='한국어 AI 대화 디자이너', 근거 등록=True
+[Verifier][최종] 판정=excluded, 최소경력=3, 경력근거=minimum_years, 이유=['실제 모집 직무가 목표 직무와 다릅니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "1e494b7a-51cf-5c00-a7b6-56914a16dbee",
+  "source_url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610160000820",
+  "decision": "excluded",
+  "reasons": [
+    "실제 모집 직무가 목표 직무와 다릅니다."
+  ],
+  "closing_date": null,
+  "minimum_experience_years": 3,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "ff5aff95-5ad3-5689-8f85-d4c9c957b6ea",
+    "01f96fe6-bb10-5606-8e77-a0f73f2a8000",
+    "47319af3-dd90-5211-91e7-8800492c21a0"
+  ]
+}
+[Lifecycle] 이전=None, 다음=unknown, 변경=[], 검토=[], 기존값 보존=False; 현재 모집 중임을 확인할 근거가 부족합니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": null,
+  "next_status": "unknown",
+  "transition_reason": "현재 모집 중임을 확인할 근거가 부족합니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] unknown: 기존 기록 보존, 저장 생략
+
+===== job_persister_node =====
+저장 공고 ID: 없음
+
+===== candidate_iterator_node =====
+cursor: 9
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300868
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300868: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[(주)딥오토] [신입/경력] AI Engineer(D-18) - 사람인', 본문=6572자, 링크=166건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[(주)딥오토] [신입/경력] AI Engineer(D-18) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형) 인적성 · 평가도구 채용상품 사람인 비즈니스 '
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=55300868
+[Navigator] 사람인 상세 본문 2259자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:51:03.027785Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=(주)딥오토, 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300868
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] (주)딥오토: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300868 경력_원본='자격요건 ㆍ컴퓨터 공학, 인공지능, 수학/통계학 등 관련 분야 학사 학위 이상 전공자(재학/휴학/졸업생 모두 가능) 또는 그에 준하는 프로그래밍 역량을 갖추신 분 ㆍPython 및 PyTorch 등 딥러닝 프레임워크를 능숙하게 다룰 수 있는 분 ㆍ최신 AI 논문의 핵심 아이디어를 빠르게 파악하고 코드로 구현해 보는 것을 …' 경력_확인='자격요건 ㆍ컴퓨터 공학, 인공지능, 수학/통계학 등 관련 분야 학사 학위 이상 전공자(재학/휴학/졸업생 모두 가능) 또는 그에 준하는 프로그래밍 역량을 갖추신 분 ㆍPython 및 PyTorch 등 딥러닝 프레임워크를 능숙하게 다룰 수 있는 분 ㆍ최신 AI 논문의 핵심 아이디어를 빠르게 파악하고 코드로 구현해 보는 것을 …' 경력_위치=상세+외부 경력_파싱=None 경력_근거=None 마감='마감일 : 2026년 11월 14일' 상태='[(주)딥오토] [신입/경력] AI Engineer(D-18) - 사람인' 지원표시='D-18' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300868, job_title='AI Engineer', role_relation=related, role_evidence='[신입/경력] AI Engineer', 근거 등록=True
+[Verifier][최종] 판정=review, 최소경력=None, 경력근거=None, 이유=['경력 조건의 의미가 불분명합니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "fb7ecc52-275f-5fa9-baff-7bdc23f164c1",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300868",
+  "decision": "review",
+  "reasons": [
+    "경력 조건의 의미가 불분명합니다."
+  ],
+  "closing_date": "2026-11-14",
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": [
+    "3c78e62e-2ba9-5bdd-a392-09718e49cd20",
+    "bb04de2a-532e-5dbf-9a6c-0a0192f338c7",
+    "5414d6c5-26bb-588c-b61e-deeffcc288d7",
+    "67b881e1-c454-5bce-b7a1-b1fccc888f44",
+    "eb2f10ab-7838-5bca-88bd-0981b2919bf0"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:f9ed79468ee2dab3c92c7132cf0f12ffafcc1a5272a1f34e41e6e3bd698090af, 새 해시=v2:f9ed79468ee2dab3c92c7132cf0f12ffafcc1a5272a1f34e41e6e3bd698090af
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300868: active, 버전=3
+
+===== job_persister_node =====
+저장 공고 ID: d4dfa421-db5f-5344-af00-041c6886fc00
+
+===== candidate_iterator_node =====
+cursor: 10
+current: https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148
+[Job Lookup] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='그레이스앤파트너스 채용 : AI/LLM 기반 Software 개발/(신입,경력) - 모빌리티 스타트업 채용 - 인크루트 채용정보', 본문=4563자, 링크=275건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '구조화 데이터 공고 마감일: 2026-11-09T23:59:59+09:00 그레이스앤파트너스 채용 : AI/LLM 기반 Software 개발/(신입,경력) - 모빌리티 스타트업 채용 - 인크루트 채용정보 인크루트 1 서울평가정보(주) 2 수협회원조합 3 용인특례시 4 서울교통공사 5 서'
+[Navigator] 인크루트 상세 iframe 조회: https://job.incruit.com/s_common/jobpost/jobpostcont.asp?job=2610100000148
+[Navigator] 인크루트 상세 본문 1089자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:51:08.865817Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=그레이스앤파트너스, 원문=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 그레이스앤파트너스: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148 경력_원본='경력: 신입, 경력(연수 무관)' 경력_확인='경력: 신입, 경력(연수 무관)' 경력_위치=상세 경력_파싱=0 경력_근거=minimum_years 마감='마감 2026.11.09 (월) 23:59 마감일은 기업의 사정으로 인해 조기마감 또는 변경될 수 있습니다.' 상태='진행중인 채용에 대한 문의내용을 적어주세요.' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148, job_title='AI/LLM 기반 Software 개발', role_relation=related, role_evidence='AI/LLM 기반 Software 개발', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "699987cf-2eff-5bd8-a0af-9bc34cb69c0d",
+  "source_url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-11-09",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "a055754d-68b9-55fd-b5bf-ead32db598e6",
+    "37e42290-5ce1-5606-aed9-5fceeb841998",
+    "863458c7-9e24-5324-812f-7f5b6e1d0d04",
+    "8d931d66-5591-5e99-b62b-cc53f24e4aef"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:bc5f95f3538bdbce699d904563509fc6aaaa2fdf2bbd86a28040f5680f473c42, 새 해시=v2:bc5f95f3538bdbce699d904563509fc6aaaa2fdf2bbd86a28040f5680f473c42
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 699987cf-2eff-5bd8-a0af-9bc34cb69c0d
+
+===== candidate_iterator_node =====
+cursor: 11
+current: https://jumpit.saramin.co.kr/position/55328047
+[Job Lookup] https://jumpit.saramin.co.kr/position/55328047: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='점핏 | Physical AI Research Engineer (전문연 가능)', 본문=4426자, 링크=19건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '점핏 | Physical AI Research Engineer (전문연 가능) 회원가입/로그인 개발자 채용 이력서 #꿀 피드 개발자 인터뷰 회원가입/로그인 기업 서비스 Physical AI Research Engineer (전문연 가능) 플라잎 💰 취업축하금 50만원 포지션 상세 정보 '
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:51:12.947312Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=플라잎, 원문=https://jumpit.saramin.co.kr/position/55328047
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 플라잎: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://jumpit.saramin.co.kr/position/55328047 경력_원본='경력 1~10년' 경력_확인='경력 1~10년' 경력_위치=미확인 경력_파싱=1 경력_근거=minimum_years 마감='마감일 2026-11-19' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://jumpit.saramin.co.kr/position/55328047, job_title='Physical AI Research Engineer', role_relation=related, role_evidence='Physical AI Research Engineer', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=1, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "572071ea-bec1-56d1-94dd-72823dd7f099",
+  "source_url": "https://jumpit.saramin.co.kr/position/55328047",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-11-19",
+  "minimum_experience_years": 1,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "dc74906c-636a-59b3-89f8-5cc40a983af2",
+    "436d9a26-f3be-55fc-989e-a675d57fd02f",
+    "f7ebaff3-ede8-5483-92f2-83772066cb7f"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:c56f6df230a2d0c2da1bf0e99027a26aa972c4b9a0adc46470f30d443dc36377, 새 해시=v2:c56f6df230a2d0c2da1bf0e99027a26aa972c4b9a0adc46470f30d443dc36377
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://jumpit.saramin.co.kr/position/55328047: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 572071ea-bec1-56d1-94dd-72823dd7f099
+
+===== candidate_iterator_node =====
+cursor: 12
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55249092
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55249092: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[오아시스스토리(주)] 개발자 [AI·IOT ] [APP/WEB](D-13) - 사람인', 본문=5713자, 링크=175건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[오아시스스토리(주)] 개발자 [AI·IOT ] [APP/WEB](D-13) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형) 인적성 · 평가도구 채용상품 사'
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=55249092
+[Navigator] 사람인 상세 본문 554자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:51:18.798176Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=오아시스스토리(주), 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55249092
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 오아시스스토리(주): 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55249092 경력_원본='지원자격 ㆍ신입 만 1) WEB APP /SQL 개발 필수 2) IOT /FIRMWARE 개발' 경력_확인='지원자격 ㆍ신입 만 1) WEB APP /SQL 개발 필수 2) IOT /FIRMWARE 개발' 경력_위치=상세+외부 경력_파싱=0 경력_근거=minimum_years 마감='마감일 2026.11.09 23:59' 상태='접수기간 : 상시' 지원표시='D-13' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55249092, job_title='개발자 [AI·IOT ] [APP/WEB]', role_relation=related, role_evidence='개발자 [AI·IOT ] [APP/WEB]', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "9d1327d9-8860-5d7d-8652-63bb8264262a",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55249092",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-11-09",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "9214e5d8-4630-537e-9764-c3c9a32cdecc",
+    "1be40728-4aaf-52b8-b7d8-8cd480707e6f",
+    "21e68040-5d0b-5d04-81c4-9dfa1271f718",
+    "0e0f154f-6c71-592d-985e-eda1935428a9",
+    "0c12f267-9b66-5ae8-a92d-d12c0ff38502"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:a85af2721ed0f663186936c6508f2de6c9497b8e5dfcdde2d76f717ac160867c, 새 해시=v2:a85af2721ed0f663186936c6508f2de6c9497b8e5dfcdde2d76f717ac160867c
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55249092: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 67504735-6226-5e25-b50b-45ed98372399
+
+===== candidate_iterator_node =====
+cursor: 13
+current: https://www.jobkorea.co.kr/Recruit/GI_Read/50142477
+[Job Lookup] https://www.jobkorea.co.kr/Recruit/GI_Read/50142477: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='메가존클라우드㈜ 채용 - AIR 부문 AI 전문 Engineer 채용 (경력) | 잡코리아', 본문=682자, 링크=12건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=False, 지원 버튼/링크=False, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '구조화 데이터 공고 마감일: 2027-10-11T15:00 메가존클라우드㈜ 채용 - AIR 부문 AI 전문 Engineer 채용 (경력) | 잡코리아 회원가입/로그인 기업 서비스 JOB 찾기 합격축하금 공채정보 신입·인턴 기업·연봉 콘텐츠 취업톡톡 메가존클라우드㈜ AIR 부문 AI 전문'
+[Navigator] 잡코리아 상세 본문 조회: https://www.jobkorea.co.kr/Recruit/GI_Read_Comt_Ifrm?Gno=50142477
+[Navigator] 잡코리아 상세 본문 4596자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:51:24.360735Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=메가존클라우드㈜, 원문=https://www.jobkorea.co.kr/Recruit/GI_Read/50142477
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 메가존클라우드㈜: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.jobkorea.co.kr/Recruit/GI_Read/50142477 경력_원본='경력 신입·경력 (1년이상)' 경력_확인='경력 신입·경력 (1년이상)' 경력_위치=외부 경력_파싱=0 경력_근거=minimum_years 마감='구조화 데이터 공고 마감일: 2027-10-11T15:00' 상태='마감일 상시채용' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.jobkorea.co.kr/Recruit/GI_Read/50142477, job_title='AI 전문 Engineer', role_relation=related, role_evidence='AI 전문 Engineer', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "b5e6d750-7e68-59d7-88f6-5b8a0162cfbc",
+  "source_url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50142477",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2027-10-11",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "322e42ec-cc0f-5e2e-8df2-000e0e1f8a61",
+    "6fb724b7-a4f7-5ca3-b014-0f4d73f4ed9a",
+    "3949c2e0-b8b3-5f4c-9411-13f0974ce022",
+    "0c95a18b-3811-57a4-9a68-c2d099e4c001"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:98a87b742223332e54d51c5ecde943b51644c1664e17e4952a77b620cccf4eca, 새 해시=v2:98a87b742223332e54d51c5ecde943b51644c1664e17e4952a77b620cccf4eca
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.jobkorea.co.kr/Recruit/GI_Read/50142477: active, 버전=2
+
+===== job_persister_node =====
+저장 공고 ID: 6e9a14b9-ad78-5946-a516-d5d6c67aa51f
+
+===== candidate_iterator_node =====
+cursor: 14
+current: https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402
+[Job Lookup] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='볼타온 채용 : AI 개발자 채용공고 - 인크루트 채용정보', 본문=3902자, 링크=262건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '구조화 데이터 공고 마감일: 2026-11-18T23:59:59+09:00 볼타온 채용 : AI 개발자 채용공고 - 인크루트 채용정보 인크루트 1 서울평가정보(주) 2 수협회원조합 3 용인특례시 4 서울교통공사 5 서일대학교 6 쿠팡로지스틱스서비스(유) 7 현대스틸산업(주) 8 한국전자'
+[Navigator] 인크루트 상세 iframe 조회: https://job.incruit.com/s_common/jobpost/jobpostcont.asp?job=2610190005402
+[Navigator] 인크루트 상세 본문 1673자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:51:31.456874Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=(주)볼타온, 원문=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] (주)볼타온: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402 경력_원본='경력: 신입/경력 3년↑' 경력_확인='경력: 신입/경력 3년↑' 경력_위치=상세 경력_파싱=0 경력_근거=minimum_years 마감='마감 2026.11.18 (수) 23:59 마감일은 기업의 사정으로 인해 조기마감 또는 변경될 수 있습니다.' 상태='본 채용은 수시 진행으로 우수 인재 채용 시 마감될 수 있습니다.' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402, job_title='AI 개발자', role_relation=related, role_evidence='AI 개발자 채용공고', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "be33f320-a458-5313-8262-b7cf1ed56e01",
+  "source_url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-11-18",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "4fcadabb-efe2-5675-b596-b4010eb5d5c5",
+    "f04b7d7f-47ec-5bca-bbd3-c601a46dbdfe",
+    "569df583-859b-56ee-90db-ffd8afcd82f9",
+    "9cb7fb2c-ac20-5536-9006-3ea188f7a323"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:eb904d62d861d038f05d67e1728d9a081de40bf3d6185fb086687e3945c21541, 새 해시=v2:eb904d62d861d038f05d67e1728d9a081de40bf3d6185fb086687e3945c21541
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: be33f320-a458-5313-8262-b7cf1ed56e01
+
+===== candidate_iterator_node =====
+cursor: 15
+current: https://jumpit.saramin.co.kr/position/55149737
+[Job Lookup] https://jumpit.saramin.co.kr/position/55149737: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='점핏 | 정보지원팀 iBiz Java 개발자 채용', 본문=3022자, 링크=18건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '점핏 | 정보지원팀 iBiz Java 개발자 채용 회원가입/로그인 개발자 채용 이력서 #꿀 피드 개발자 인터뷰 회원가입/로그인 기업 서비스 정보지원팀 iBiz Java 개발자 채용 인젠트 💰 취업축하금 50만원 💰 매출액 100억 기업 👫 패밀리데이 🌟 휴가비 지원 🚆 5호선 역세권 기'
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=인젠트, 원문=https://jumpit.saramin.co.kr/position/55149737
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 인젠트: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://jumpit.saramin.co.kr/position/55149737 경력_원본='Java 기반 웹 애플리케이션 개발 실무 경력 3년 이상 (7년 이하)' 경력_확인='Java 기반 웹 애플리케이션 개발 실무 경력 3년 이상 (7년 이하)' 경력_위치=미확인 경력_파싱=3 경력_근거=minimum_years 마감='마감일 2026-10-28' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://jumpit.saramin.co.kr/position/55149737, job_title='iBiz Java 개발자', role_relation=unrelated, role_evidence='iBiz Java 개발자', 근거 등록=True
+[Verifier][최종] 판정=excluded, 최소경력=3, 경력근거=minimum_years, 이유=['실제 모집 직무가 목표 직무와 다릅니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "99666646-9a59-514b-bc64-da9b3fa0c4a0",
+  "source_url": "https://jumpit.saramin.co.kr/position/55149737",
+  "decision": "excluded",
+  "reasons": [
+    "실제 모집 직무가 목표 직무와 다릅니다."
+  ],
+  "closing_date": "2026-10-28",
+  "minimum_experience_years": 3,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "54d3261c-8610-5d83-81b7-e307a6ba7878",
+    "f0e25fca-7e34-528a-b778-eeb5cf90cd3e",
+    "47ce7ea5-6fa0-50e3-abe5-7d0399e13847"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:dab187f085d52aec0dcd683f11bc4d6aa7e279ce29175d65595356d93b89cf41, 새 해시=v2:dab187f085d52aec0dcd683f11bc4d6aa7e279ce29175d65595356d93b89cf41
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://jumpit.saramin.co.kr/position/55149737: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 99666646-9a59-514b-bc64-da9b3fa0c4a0
+
+===== candidate_iterator_node =====
+cursor: 16
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55242853
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55242853: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[(주)이우소프트] AI Agent Engineer(LLM · TypeScript) [신입](D-10) - 사람인', 본문=7616자, 링크=169건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[(주)이우소프트] AI Agent Engineer(LLM · TypeScript) [신입](D-10) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형) 인적'
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=55242853
+[Navigator] 사람인 상세 본문 3055자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 2건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:51:40.404687Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=(주)이우소프트, 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55242853
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] (주)이우소프트: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][마감일 충돌] 추출=None, 원문 날짜=[datetime.date(2026, 11, 6)]
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55242853 경력_원본='자격요건 • 신입' 경력_확인='자격요건 • 신입' 경력_위치=상세+외부 경력_파싱=0 경력_근거=minimum_years 마감='' 상태='마감일 : 채용시 마감' 지원표시='D-10' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55242853, job_title='AI Agent Engineer(LLM · TypeScript) [신입]', role_relation=related, role_evidence='AI Agent Engineer(LLM · TypeScript) [신입]', 근거 등록=True
+[Verifier][최종] 판정=review, 최소경력=0, 경력근거=minimum_years, 이유=['사람인 공고 제목의 D-10 표시를 확인했습니다.', '원문의 마감일 표기가 서로 충돌해 확인이 필요합니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "c8e5ade0-4cdb-5a91-b4f7-96455c0e565c",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55242853",
+  "decision": "review",
+  "reasons": [
+    "사람인 공고 제목의 D-10 표시를 확인했습니다.",
+    "원문의 마감일 표기가 서로 충돌해 확인이 필요합니다."
+  ],
+  "closing_date": null,
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "b891cdff-44f8-51c1-856e-edb0306b8a3a",
+    "3ea7ee5f-e6e2-5761-88a7-d709e860005c",
+    "30b820fb-ce59-5201-bbfd-a94b67c7f248",
+    "06def6ca-d28f-5882-9df4-22b7d3af7aa1"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:78178be559b7ed8502ab568de76199bf4202297ec8163a75a4fa17a97668d626, 새 해시=v2:78178be559b7ed8502ab568de76199bf4202297ec8163a75a4fa17a97668d626
+[Lifecycle][근거 충돌] closes_at: 기존 저장값='None', 새 추출값='None'; 기존값 보존, 자동 변경 없음
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=['closes_at'], 기존값 보존=True; 원문의 근거가 충돌해 기존값을 보존하고 검토 대상으로 기록했습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "원문의 근거가 충돌해 기존값을 보존하고 검토 대상으로 기록했습니다.",
+  "changed_fields": [],
+  "review_fields": [
+    "closes_at"
+  ],
+  "should_publish": false,
+  "should_preserve_existing": true
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55242853: active, 버전=2
+
+===== job_persister_node =====
+저장 공고 ID: 7ae45ceb-c161-5e00-890f-64c7861ff951
+
+===== candidate_iterator_node =====
+cursor: 17
+current: https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000147
+[Job Lookup] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000147: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='그레이스앤파트너스 채용 : SDV Platform SW 개발/(신입,경력)/(Linux) - 모빌리티 스타트업 채용 - 인크루트 채용정보', 본문=4397자, 링크=272건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '구조화 데이터 공고 마감일: 2026-11-09T23:59:59+09:00 그레이스앤파트너스 채용 : SDV Platform SW 개발/(신입,경력)/(Linux) - 모빌리티 스타트업 채용 - 인크루트 채용정보 인크루트 1 서울평가정보(주) 2 수협회원조합 3 용인특례시 4 서울교통공'
+[Navigator] 인크루트 상세 iframe 조회: https://job.incruit.com/s_common/jobpost/jobpostcont.asp?job=2610100000147
+[Navigator] 인크루트 상세 본문 1184자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:51:46.516975Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=그레이스앤파트너스, 원문=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000147
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 그레이스앤파트너스: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000147 경력_원본='경력: 신입, 경력(연수 무관)' 경력_확인='경력: 신입, 경력(연수 무관)' 경력_위치=상세 경력_파싱=0 경력_근거=minimum_years 마감='마감 2026.11.09 (월) 23:59 마감일은 기업의 사정으로 인해 조기마감 또는 변경될 수 있습니다.' 상태='진행중인 채용에 대한 문의내용을 적어주세요.' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000147, job_title='SDV Platform SW 개발', role_relation=related, role_evidence='SDV Platform SW 개발', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "5c5bb5f1-a857-5ef7-a4eb-a5fd0614b99d",
+  "source_url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000147",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-11-09",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "ccbeaff3-70d8-5fff-a84a-f000baa521a7",
+    "5e2df962-1b77-51ae-b2df-5570ebaa20b3",
+    "471c93ad-49fe-5067-991f-610d4be231a3",
+    "3b5dbc13-e952-55b1-acb1-3a1718768bc3"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:8c83daed38340713515f07d2c8dce5ac32be1003d35b089bbdb6165c97b0b07c, 새 해시=v2:8c83daed38340713515f07d2c8dce5ac32be1003d35b089bbdb6165c97b0b07c
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000147: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 5c5bb5f1-a857-5ef7-a4eb-a5fd0614b99d
+
+===== candidate_iterator_node =====
+cursor: 18
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[쿤텍(주)] AI기반 가상머신개발AX(신입)(D-21) - 사람인', 본문=5535자, 링크=168건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[쿤텍(주)] AI기반 가상머신개발AX(신입)(D-21) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형) 인적성 · 평가도구 채용상품 사람인 비즈니스 전체메'
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=55325059
+[Navigator] 사람인 상세 본문 1015자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:51:51.555467Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=쿤텍 주식회사, 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 쿤텍 주식회사: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059 경력_원본='자격요건 •신입 • 대학교졸업(4년)이상 • 경력 무관' 경력_확인='자격요건 •신입 • 대학교졸업(4년)이상 • 경력 무관' 경력_위치=상세+외부 경력_파싱=0 경력_근거=minimum_years 마감='마감일 : 2026년 11월 17일' 상태='채용중' 지원표시='D-21' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059, job_title='AI기반 가상머신개발AX(신입)', role_relation=related, role_evidence='AI기반 가상머신개발AX(신입)', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "5294806c-e030-5dee-af5f-fa6b546e5a3f",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-11-17",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "fd306eb9-0795-5399-b772-b16480977e27",
+    "da8ba126-c33e-5c6a-8291-9455d9f28ad6",
+    "453cda9e-bfeb-51fb-9268-ec4b230d7646",
+    "fcbdaa38-510b-503f-9039-8ee7d29163de",
+    "c691d8c1-72c3-52e8-ab31-25423099e66a"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:711c51da3882150f94333b9d1f29d1dc23c7a9a935dce81f5f21a92f15cf863d, 새 해시=v2:711c51da3882150f94333b9d1f29d1dc23c7a9a935dce81f5f21a92f15cf863d
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 34955ad7-e8f0-5144-8d10-09ec216d01e0
+
+===== candidate_iterator_node =====
+cursor: 19
+current: https://jumpit.saramin.co.kr/position/55242888
+[Job Lookup] https://jumpit.saramin.co.kr/position/55242888: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='점핏 | AI Agent Engineer(LLM · TypeScript)', 본문=3221자, 링크=17건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '점핏 | AI Agent Engineer(LLM · TypeScript) 회원가입/로그인 개발자 채용 이력서 #꿀 피드 개발자 인터뷰 회원가입/로그인 기업 서비스 AI Agent Engineer(LLM · TypeScript) 이우소프트 💰 취업축하금 50만원 🏠 주거복지 🏢 바텍네트웍'
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=이우소프트, 원문=https://jumpit.saramin.co.kr/position/55242888
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 이우소프트: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://jumpit.saramin.co.kr/position/55242888 경력_원본='경력 5년 이하 (개인·팀 프로젝트 경험 인정)' 경력_확인='경력 5년 이하 (개인·팀 프로젝트 경험 인정)' 경력_위치=미확인 경력_파싱=None 경력_근거=None 마감='마감일 2026-11-06' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://jumpit.saramin.co.kr/position/55242888, job_title='AI Agent Engineer(LLM · TypeScript)', role_relation=related, role_evidence='AI Agent Engineer(LLM · TypeScript)', 근거 등록=True
+[Verifier][최종] 판정=review, 최소경력=None, 경력근거=None, 이유=['경력 조건의 의미가 불분명합니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "0553e79b-ba82-5aa8-a174-79af7b19f21f",
+  "source_url": "https://jumpit.saramin.co.kr/position/55242888",
+  "decision": "review",
+  "reasons": [
+    "경력 조건의 의미가 불분명합니다."
+  ],
+  "closing_date": "2026-11-06",
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": [
+    "0483b6e7-1cd5-5612-98cd-19d9ff57f0ba",
+    "b89cc152-3556-5f42-9d1d-02157ada96de",
+    "517cc873-ccfa-5807-bf49-5760dd20cbed"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:3c784c320bba8a8dbe6742ec45d5c356b1781b7136402b1b0a3fde456e64a802, 새 해시=v2:3c784c320bba8a8dbe6742ec45d5c356b1781b7136402b1b0a3fde456e64a802
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://jumpit.saramin.co.kr/position/55242888: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 0553e79b-ba82-5aa8-a174-79af7b19f21f
+
+===== candidate_iterator_node =====
+cursor: 20
+current: https://www.jobkorea.co.kr/Recruit/GI_Read/50082655
+[Job Lookup] https://www.jobkorea.co.kr/Recruit/GI_Read/50082655: 신규 후보
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='㈜시몬스 채용 - 2026년 하반기 각 부문별 신입/경력 채용공고 | 잡코리아', 본문=775자, 링크=12건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=False, 지원 버튼/링크=False, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '구조화 데이터 공고 마감일: 2026-10-31T23:59 ㈜시몬스 채용 - 2026년 하반기 각 부문별 신입/경력 채용공고 | 잡코리아 회원가입/로그인 기업 서비스 JOB 찾기 합격축하금 공채정보 신입·인턴 기업·연봉 콘텐츠 취업톡톡 ㈜시몬스 2026년 하반기 각 부문별 신입/경력 채'
+[Navigator] 잡코리아 상세 본문 조회: https://www.jobkorea.co.kr/Recruit/GI_Read_Comt_Ifrm?Gno=50082655
+[Navigator] 잡코리아 상세 본문 7341자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+[Extractor] 공고 초안 미생성: 회사명=확인, 직무명=미확인 (둘 다 확인되어야 JobPostingDraft 생성)
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] https://www.jobkorea.co.kr/Recruit/GI_Read/50082655: 공고 초안 없음 (회사명=확인, 직무명=미확인)
+[Company Enricher][6/6 완료] 보강 생략, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][마감일 보완] 원문 표기='마감일: 2026-10-31', 날짜=2026-10-31
+[Verifier][근거] url=https://www.jobkorea.co.kr/Recruit/GI_Read/50082655 경력_원본='' 경력_확인='' 경력_위치=미확인 경력_파싱=None 경력_근거=None 마감='마감일: 2026-10-31' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.jobkorea.co.kr/Recruit/GI_Read/50082655, job_title=None, role_relation=unrelated, role_evidence='슬립마스터 (Sales)', 근거 등록=True
+[Verifier][최종] 판정=excluded, 최소경력=None, 경력근거=None, 이유=['요구 경력을 원문에서 확인하지 못했습니다.', '실제 모집 직무가 목표 직무와 다릅니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "93107446-d5c2-553c-b96a-da83a217f03e",
+  "source_url": "https://www.jobkorea.co.kr/Recruit/GI_Read/50082655",
+  "decision": "excluded",
+  "reasons": [
+    "요구 경력을 원문에서 확인하지 못했습니다.",
+    "실제 모집 직무가 목표 직무와 다릅니다."
+  ],
+  "closing_date": "2026-10-31",
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": [
+    "b3d14256-c58a-5e21-af6c-b765ddb5d902",
+    "4b1d2fe7-d720-57a2-81c9-6a514fe0f0bb",
+    "e66b46c6-75ce-53f1-9b5c-f664635eeb17"
+  ]
+}
+[Lifecycle] 이전=None, 다음=unknown, 변경=[], 검토=[], 기존값 보존=False; 모집 신호는 있지만 회사명·직무명 초안이 없어 공고를 확정할 수 없습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": null,
+  "next_status": "unknown",
+  "transition_reason": "모집 신호는 있지만 회사명·직무명 초안이 없어 공고를 확정할 수 없습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] unknown: 기존 기록 보존, 저장 생략
+
+===== job_persister_node =====
+저장 공고 ID: 없음
+
+===== candidate_iterator_node =====
+cursor: 21
+current: https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000014
+[Job Lookup] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000014: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='삼일회계법인 채용 : 금융본부 LLM/Data Engineer 채용 - 인크루트 채용정보', 본문=3874자, 링크=269건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '삼일회계법인 채용 : 금융본부 LLM/Data Engineer 채용 - 인크루트 채용정보 인크루트 1 서울평가정보(주) 2 수협회원조합 3 용인특례시 4 서울교통공사 5 서일대학교 6 쿠팡로지스틱스서비스(유) 7 현대스틸산업(주) 8 한국전자기술연구원 9 여수광양항만공사 10 한국건강증'
+[Navigator] 인크루트 상세 iframe 조회: https://job.incruit.com/s_common/jobpost/jobpostcont.asp?job=2610030000014
+[Navigator] 인크루트 상세 본문 1168자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=삼일회계법인, 원문=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000014
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 삼일회계법인: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000014 경력_원본='자격요건으로는 상태 기반 AI 워크플로우 설계 경험과 에이전트 도구 활용 최적화 능력, 딥러닝 모델 구조에 대한 깊은 이해를 바탕으로 모델 학습 및 정렬 기법을 적용해 성능을 개선해 본 실무 경험이 요구된다. 또한 GPU 아키텍처에 대한 이해를 토대로 vLLM 등 추론 엔진을 활용해 레이턴시를 단축해 본 경험, 대규모 비…' 경력_확인='자격요건으로는 상태 기반 AI 워크플로우 설계 경험과 에이전트 도구 활용 최적화 능력, 딥러닝 모델 구조에 대한 깊은 이해를 바탕으로 모델 학습 및 정렬 기법을 적용해 성능을 개선해 본 실무 경험이 요구된다. 또한 GPU 아키텍처에 대한 이해를 토대로 vLLM 등 추론 엔진을 활용해 레이턴시를 단축해 본 경험, 대규모 비…' 경력_위치=상세 경력_파싱=None 경력_근거=None 마감='' 상태='진행중인 채용정보' 지원표시='채용시' 복수포지션=False
+[Verifier] 직무 판단: url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000014, job_title='LLM/Data Engineer', role_relation=related, role_evidence='LLM/Data Engineer', 근거 등록=True
+[Verifier][최종] 판정=review, 최소경력=None, 경력근거=None, 이유=['채용시 표시와 홈페이지 지원 버튼을 확인했습니다.', '경력 조건의 의미가 불분명합니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "f4bdb33d-bde0-5db0-8dc1-77473bcc2cca",
+  "source_url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000014",
+  "decision": "review",
+  "reasons": [
+    "채용시 표시와 홈페이지 지원 버튼을 확인했습니다.",
+    "경력 조건의 의미가 불분명합니다."
+  ],
+  "closing_date": null,
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": [
+    "3d1c9521-396b-596e-b03a-33e702c436db",
+    "3da3247e-92bd-53a3-8075-c0fca0ed3d00",
+    "e44830ed-1154-5f86-abf4-e9fcdc616fa0",
+    "490f28c1-685f-51ae-b2cc-2719098cd9f9"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:fa636697138fc6e53c330526e1b16dde8c187b07dab5eb62b28c16560b3e820e, 새 해시=v2:fa636697138fc6e53c330526e1b16dde8c187b07dab5eb62b28c16560b3e820e
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000014: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: f4bdb33d-bde0-5db0-8dc1-77473bcc2cca
+
+===== candidate_iterator_node =====
+cursor: 22
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300900
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300900: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[(주)딥오토] [신입/경력] AI Platform Engineer(D-18) - 사람인', 본문=7927자, 링크=160건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[(주)딥오토] [신입/경력] AI Platform Engineer(D-18) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형) 인적성 · 평가도구 채용상품 '
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=55300900
+[Navigator] 사람인 상세 본문 3657자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=(주)딥오토, 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300900
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] (주)딥오토: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300900 경력_원본='• Python 등 하나 이상의 프로그래밍 언어로 백엔드 서비스를 설계하고 개발한 경험이 있으신 분. 주로 Python을 사용하며, 필요에 따라 Go, TypeScript, Rust 등 다른 언어를 학습하고 활용할 수 있는 분을 찾습니다. • SQL 또는 NoSQL 데이터베이스를 활용해 데이터를 설계하고, 조회 성능이나 …' 경력_확인='• Python 등 하나 이상의 프로그래밍 언어로 백엔드 서비스를 설계하고 개발한 경험이 있으신 분. 주로 Python을 사용하며, 필요에 따라 Go, TypeScript, Rust 등 다른 언어를 학습하고 활용할 수 있는 분을 찾습니다. • SQL 또는 NoSQL 데이터베이스를 활용해 데이터를 설계하고, 조회 성능이나 …' 경력_위치=상세+외부 경력_파싱=None 경력_근거=None 마감='마감일 : 2026년 11월 14일' 상태='[신입/경력] AI Platform Engineer(D-18)' 지원표시='D-18' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300900, job_title='AI Platform Engineer', role_relation=related, role_evidence='AI Platform Engineer', 근거 등록=True
+[Verifier][최종] 판정=review, 최소경력=None, 경력근거=None, 이유=['경력 조건의 의미가 불분명합니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "b4b36d97-a884-50d1-9d46-e6c89b0510ad",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300900",
+  "decision": "review",
+  "reasons": [
+    "경력 조건의 의미가 불분명합니다."
+  ],
+  "closing_date": "2026-11-14",
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": [
+    "841db3a3-b998-5fbf-bb74-60fbccdad67b",
+    "34c0f07d-87e6-5bbe-82aa-0a7839d7a229",
+    "d97678e3-0208-5260-8418-65df983d7ecd",
+    "07fcd8b1-de7b-5558-b60c-4aa05e7dbf37",
+    "bf1e559c-72c1-5708-8dd6-0fe6c808ace6"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:ec88b2846128dc046c9042f3d0bcfa3e6d8e9abbb6c416ccdb17b659b345241f, 새 해시=v2:ec88b2846128dc046c9042f3d0bcfa3e6d8e9abbb6c416ccdb17b659b345241f
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300900: active, 버전=3
+
+===== job_persister_node =====
+저장 공고 ID: d182bc10-76c4-5294-8cdf-cd2d20f80a52
+
+===== candidate_iterator_node =====
+cursor: 23
+current: https://jumpit.saramin.co.kr/position/55242193
+[Job Lookup] https://jumpit.saramin.co.kr/position/55242193: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='점핏 | 백엔드 개발자', 본문=3486자, 링크=25건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '점핏 | 백엔드 개발자 회원가입/로그인 개발자 채용 이력서 #꿀 피드 개발자 인터뷰 회원가입/로그인 기업 서비스 백엔드 개발자 와탭랩스 💰 취업축하금 50만원 💰 시리즈B 투자유치 💰 연봉상승률 10% 이상 💰 평균연봉 상위 10% 🚀 스타트업 🚆 2호선 역세권 기업 🦄 아기 유니콘 🍚'
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:52:21.345297Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=와탭랩스, 원문=https://jumpit.saramin.co.kr/position/55242193
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 와탭랩스: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://jumpit.saramin.co.kr/position/55242193 경력_원본='경력 3~10년 학력 무관' 경력_확인='경력 3~10년 학력 무관' 경력_위치=미확인 경력_파싱=3 경력_근거=minimum_years 마감='마감일 2026-11-09' 상태='해당 공고는 수시 채용으로, 채용 완료 시 조기 마감 될 수 있습니다.' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://jumpit.saramin.co.kr/position/55242193, job_title='백엔드 개발자', role_relation=uncertain, role_evidence='백엔드 개발자', 근거 등록=True
+[Verifier][최종] 판정=review, 최소경력=3, 경력근거=minimum_years, 이유=['모집 직무가 목표 직무와 관련되는지 확인이 필요합니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "07b49e66-05ba-570e-a6f1-229738e7dd37",
+  "source_url": "https://jumpit.saramin.co.kr/position/55242193",
+  "decision": "review",
+  "reasons": [
+    "모집 직무가 목표 직무와 관련되는지 확인이 필요합니다."
+  ],
+  "closing_date": "2026-11-09",
+  "minimum_experience_years": 3,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "48ffcebc-987c-557f-b4fb-60bd4f67fdd5",
+    "eaf40d46-40be-51fe-98c6-86d59feced5f",
+    "62ffd06f-a129-5b52-8b50-7e527efde2cb",
+    "db730403-fb11-594e-9898-f1e9ec72f2db"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:2100471f43d57a910a501f313f3964621040ec4350cd6f2ceb990dade9aeabbd, 새 해시=v2:2100471f43d57a910a501f313f3964621040ec4350cd6f2ceb990dade9aeabbd
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://jumpit.saramin.co.kr/position/55242193: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 07b49e66-05ba-570e-a6f1-229738e7dd37
+
+===== candidate_iterator_node =====
+cursor: 24
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[(주)인포매직스] [신입/정규직] HW, 임베디드, SW 개발 엔지니어 채용(채용시 마감) - 사람인', 본문=7543자, 링크=180건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[(주)인포매직스] [신입/정규직] HW, 임베디드, SW 개발 엔지니어 채용(채용시 마감) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형) 인적성 · 평가'
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=54914662
+[Navigator] 사람인 상세 본문 1767자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 2건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:52:28.537404Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=(주)인포매직스, 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] (주)인포매직스: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662 경력_원본='📋 자격요건 • 신입 • 대학교졸업(4년)이상, 졸업 예정자 지원가능' 경력_확인='📋 자격요건 • 신입 • 대학교졸업(4년)이상, 졸업 예정자 지원가능' 경력_위치=상세+외부 경력_파싱=0 경력_근거=minimum_years 마감='접수기간 및 방법 채용시 마감 되는 공고입니다.' 상태='' 지원표시='채용시 마감' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662, job_title='HW, 임베디드, SW 개발 엔지니어', role_relation=related, role_evidence='HW, 임베디드, SW 개발 엔지니어', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['사람인 공고 제목의 채용시 마감 표시를 확인했습니다.', '모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "22c2b716-d219-5495-9286-07f129980b5d",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662",
+  "decision": "eligible",
+  "reasons": [
+    "사람인 공고 제목의 채용시 마감 표시를 확인했습니다.",
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": null,
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "a3b4664b-1261-5d50-9559-79a38b51adec",
+    "b7077c68-c58f-5d26-8ff9-dd2e2ec4b4c2",
+    "e36bab5f-5375-50aa-91f7-acacb9102107",
+    "df26e897-5c14-5e09-8b4a-89787d4194b6"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:22789a59ba9cda8b4d644c1a3222a8017435ab340f469a116f7e4c3bae5a754a, 새 해시=v2:22789a59ba9cda8b4d644c1a3222a8017435ab340f469a116f7e4c3bae5a754a
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: a01b4ad8-88a6-563f-bc1d-5f7091877d8a
+
+===== candidate_iterator_node =====
+cursor: 25
+current: https://www.jobkorea.co.kr/Recruit/GI_Read/49991551
+[Job Lookup] https://www.jobkorea.co.kr/Recruit/GI_Read/49991551: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='캐드아이티코리아㈜ 채용 - 전자기장 해석 Pre-Sales 엔지니어 (주니어) 신규/경력 채용 | 잡코리아', 본문=856자, 링크=12건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=False, 지원 버튼/링크=False, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '구조화 데이터 공고 마감일: 2026-11-14T23:59 캐드아이티코리아㈜ 채용 - 전자기장 해석 Pre-Sales 엔지니어 (주니어) 신규/경력 채용 | 잡코리아 회원가입/로그인 기업 서비스 JOB 찾기 합격축하금 공채정보 신입·인턴 기업·연봉 콘텐츠 취업톡톡 캐드아이티코리아㈜ 전자'
+[Navigator] 잡코리아 상세 본문 조회: https://www.jobkorea.co.kr/Recruit/GI_Read_Comt_Ifrm?Gno=49991551
+[Navigator] 잡코리아 상세 본문 947자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:52:34.060613Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=캐드아이티코리아㈜, 원문=https://www.jobkorea.co.kr/Recruit/GI_Read/49991551
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 캐드아이티코리아㈜: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.jobkorea.co.kr/Recruit/GI_Read/49991551 경력_원본='경력 : 무관' 경력_확인='경력 : 무관' 경력_위치=상세 경력_파싱=None 경력_근거=None 마감='마감일 2026.11.14(토)' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.jobkorea.co.kr/Recruit/GI_Read/49991551, job_title='전자기장 해석 Pre-Sales 엔지니어 (주니어)', role_relation=unrelated, role_evidence='전자기장 해석 Pre-Sales 엔지니어 (주니어)', 근거 등록=True
+[Verifier][최종] 판정=excluded, 최소경력=None, 경력근거=None, 이유=['경력 조건의 의미가 불분명합니다.', '실제 모집 직무가 목표 직무와 다릅니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "8a0fe010-0aa7-537b-a9eb-55831b990049",
+  "source_url": "https://www.jobkorea.co.kr/Recruit/GI_Read/49991551",
+  "decision": "excluded",
+  "reasons": [
+    "경력 조건의 의미가 불분명합니다.",
+    "실제 모집 직무가 목표 직무와 다릅니다."
+  ],
+  "closing_date": "2026-11-14",
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": [
+    "c939b3c2-73b9-5dfb-81a9-fb23dc357330",
+    "5fb5b730-5bf6-5771-86b3-7d42e2607fbd",
+    "d664fb46-2b43-58fe-974d-bdcdbe71c091"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:b3b1bafdfb625bcf387dc17fd6d5d774a7a9c093acd5085724cb66d67183e465, 새 해시=v2:b3b1bafdfb625bcf387dc17fd6d5d774a7a9c093acd5085724cb66d67183e465
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.jobkorea.co.kr/Recruit/GI_Read/49991551: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: bd9092e1-7715-5bf9-b7f9-d820b841a71f
+
+===== candidate_iterator_node =====
+cursor: 26
+current: https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000069
+[Job Lookup] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000069: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='카카오 채용 : LLM Research Engineer (Post-training) (신입/경력) 채용 - 인크루트 채용정보', 본문=3966자, 링크=274건
+[Navigator] 상세 판별 신호: JobPosting=True, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '카카오 채용 : LLM Research Engineer (Post-training) (신입/경력) 채용 - 인크루트 채용정보 인크루트 1 서울평가정보(주) 2 수협회원조합 3 용인특례시 4 서울교통공사 5 서일대학교 6 쿠팡로지스틱스서비스(유) 7 현대스틸산업(주) 8 한국전자기술연구원'
+[Navigator] 인크루트 상세 iframe 조회: https://job.incruit.com/s_common/jobpost/jobpostcont.asp?job=2610030000069
+[Navigator] 인크루트 상세 본문 1012자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=주식회사 카카오, 원문=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000069
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 주식회사 카카오: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000069 경력_원본='지원을 위해서는 CS, AI, ML 등 관련 전공에서 석사 이상의 학력을 갖추고 있거나 이에 준하는 프로젝트 경험이 요구된다. 아울러 Torch distributed, deepspeed, ray 등을 활용한 분산처리 기반의 언어 모델 학습 경험과 SFT, RL 등을 포함한 LLM Post-training 경험도 지원 자격…' 경력_확인='지원을 위해서는 CS, AI, ML 등 관련 전공에서 석사 이상의 학력을 갖추고 있거나 이에 준하는 프로젝트 경험이 요구된다. 아울러 Torch distributed, deepspeed, ray 등을 활용한 분산처리 기반의 언어 모델 학습 경험과 SFT, RL 등을 포함한 LLM Post-training 경험도 지원 자격…' 경력_위치=상세 경력_파싱=None 경력_근거=None 마감='' 상태='이번 모집은 신입과 경력 지원자 모두를 대상으로 하며' 지원표시='채용시' 복수포지션=False
+[Verifier] 직무 판단: url=https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000069, job_title='LLM Research Engineer (Post-training)', role_relation=related, role_evidence='LLM Research Engineer (Post-training)', 근거 등록=True
+[Verifier][최종] 판정=review, 최소경력=None, 경력근거=None, 이유=['채용시 표시와 홈페이지 지원 버튼을 확인했습니다.', '경력 조건의 의미가 불분명합니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "18f553c6-7ed8-54be-beb3-4d8330601cae",
+  "source_url": "https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000069",
+  "decision": "review",
+  "reasons": [
+    "채용시 표시와 홈페이지 지원 버튼을 확인했습니다.",
+    "경력 조건의 의미가 불분명합니다."
+  ],
+  "closing_date": null,
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": [
+    "e242519c-3371-5e3f-b81f-789d785c7c0b",
+    "34f2f04f-79ed-5f4a-a8d0-7de0f5da1d1c",
+    "f8065474-782e-5035-9a20-af17630ad393",
+    "d37f900c-2885-543c-810a-74593f724b43"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:e27c1a9e280f113a67e3edc94c2bb77f711b5dfa4df18247dc0332bbaa1872ab, 새 해시=v2:e27c1a9e280f113a67e3edc94c2bb77f711b5dfa4df18247dc0332bbaa1872ab
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000069: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 18f553c6-7ed8-54be-beb3-4d8330601cae
+
+===== candidate_iterator_node =====
+cursor: 27
+current: https://jumpit.saramin.co.kr/position/55366656
+[Job Lookup] https://jumpit.saramin.co.kr/position/55366656: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='점핏 | AI Native Back-end Engineer', 본문=3516자, 링크=19건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '점핏 | AI Native Back-end Engineer 회원가입/로그인 개발자 채용 이력서 #꿀 피드 개발자 인터뷰 회원가입/로그인 기업 서비스 AI Native Back-end Engineer 올거나이즈코리아 💰 취업축하금 50만원 💰 연봉상승률 10% 이상 💰 평균연봉 상위 10'
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=올거나이즈코리아, 원문=https://jumpit.saramin.co.kr/position/55366656
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 올거나이즈코리아: 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://jumpit.saramin.co.kr/position/55366656 경력_원본='자격요건 • 3년 이상의 백엔드 개발 경력이 있으신 분' 경력_확인='자격요건 • 3년 이상의 백엔드 개발 경력이 있으신 분' 경력_위치=미확인 경력_파싱=3 경력_근거=minimum_years 마감='마감일 2026-11-20' 상태='' 지원표시='' 복수포지션=False
+[Verifier] 직무 판단: url=https://jumpit.saramin.co.kr/position/55366656, job_title='AI Native Back-end Engineer', role_relation=related, role_evidence='AI Native Back-end Engineer', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=3, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "c963ad4c-acf4-557b-9201-c8501a924401",
+  "source_url": "https://jumpit.saramin.co.kr/position/55366656",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-11-20",
+  "minimum_experience_years": 3,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "05b9c0dd-1bd9-5f3c-99b4-ba7503d67e56",
+    "8f8f67a3-7c8e-5656-8722-0b09996ea137",
+    "9ded5a00-9745-5444-9830-d5b0ea45afa5"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:d29e3dcb7c5bbc2ffc693d83c4980c17014e862278f9a327dc214c50dada2f84, 새 해시=v2:d29e3dcb7c5bbc2ffc693d83c4980c17014e862278f9a327dc214c50dada2f84
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://jumpit.saramin.co.kr/position/55366656: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: c963ad4c-acf4-557b-9201-c8501a924401
+
+===== candidate_iterator_node =====
+cursor: 28
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55377393
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55377393: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[코드비전(주)] 석박사 AI Research Engineer (Vision & NLP)(D-26) - 사람인', 본문=6170자, 링크=153건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[코드비전(주)] 석박사 AI Research Engineer (Vision & NLP)(D-26) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형) 인적성 '
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=55377393
+[Navigator] 사람인 상세 본문 2356자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=코드비전(주), 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55377393
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 코드비전(주): 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55377393 경력_원본='자격요건 • AI, 컴퓨터공학, 데이터사이언스, 전자공학 등 관련 분야 석사 이상 학위 소지자 • Python 기반 개발 및 딥러닝 모델 학습 경험이 있으신 분' 경력_확인='자격요건 • AI, 컴퓨터공학, 데이터사이언스, 전자공학 등 관련 분야 석사 이상 학위 소지자 • Python 기반 개발 및 딥러닝 모델 학습 경험이 있으신 분' 경력_위치=상세+외부 경력_파싱=None 경력_근거=None 마감='접수기간 : 2026-10-23 15시 ~ 2026-11-22 24시' 상태='남은 기간 00 일 00:00:00' 지원표시='D-26' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55377393, job_title='AI Research Engineer (Vision & NLP)', role_relation=related, role_evidence='AI Research Engineer (Vision & NLP)', 근거 등록=True
+[Verifier][최종] 판정=review, 최소경력=None, 경력근거=None, 이유=['경력 조건의 의미가 불분명합니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "0bce14c9-8c8c-5386-bd91-30cf13c9bc51",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55377393",
+  "decision": "review",
+  "reasons": [
+    "경력 조건의 의미가 불분명합니다."
+  ],
+  "closing_date": "2026-11-22",
+  "minimum_experience_years": null,
+  "experience_basis": null,
+  "evidence_ids": [
+    "6669ba25-60be-54b4-a608-c0f36ded2b91",
+    "e3c6f95a-6f45-5972-a94f-f4ca21b70254",
+    "d4a749ab-53fe-5815-908b-f380dd3ba43c",
+    "c5fd580e-d869-5c52-b76f-d659d45d16d9",
+    "db22d786-74aa-5f82-93a3-f678d0ab6715"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:42ec4794b9f7891426ebaf04c42f5ad3686a9fbaaab2af64eda82eb868c950ab, 새 해시=v2:42ec4794b9f7891426ebaf04c42f5ad3686a9fbaaab2af64eda82eb868c950ab
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55377393: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 1695893d-4498-5f39-837d-86cf08dc8244
+
+===== candidate_iterator_node =====
+cursor: 29
+current: https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55319893
+[Job Lookup] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55319893: 기존 공고 있음
+
+===== existing_job_lookup_node =====
+[Navigator] HTTP 200, 제목='[그레이스앤파트너스(주)] AI/LLM 기반 S/W 개발/(신입) - Mobility Startup(D-5) - 사람인', 본문=5351자, 링크=158건
+[Navigator] 상세 판별 신호: JobPosting=False, 단일 h1=True, 지원 버튼/링크=True, 마감 상태 문구=False
+[Navigator] 본문 앞부분: '[그레이스앤파트너스(주)] AI/LLM 기반 S/W 개발/(신입) - Mobility Startup(D-5) - 사람인 본문 바로가기 공채는 역시, 사람인 공채는 역시, 사람인 AI 검색 로그인 회원가입 기업서비스 로그인 회원가입 기업홈 공고 등록 후보자 관리 인재풀 공고 요청(후불형)'
+[Navigator] 사람인 상세 본문 조회: https://www.saramin.co.kr/api/jobs/job/content?rec_idx=55319893
+[Navigator] 사람인 상세 본문 1015자 병합
+[Navigator] 개별 공고로 분류 → Extractor
+
+===== navigator_node =====
+
+===== extractor_node =====
+{
+  "node_name": "extractor",
+  "error_type": "UnconfirmedEvidence",
+  "message": "원문에서 확인되지 않은 인용 1건을 제외했습니다.",
+  "occurred_at": "2026-10-27T06:52:59.661718Z",
+  "retryable": false
+}
+[Company Enricher][1/6 입력 확인] 공고 초안과 원문 확인
+[Company Enricher][1/6 입력 확인] 회사=그레이스앤파트너스(주), 원문=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55319893
+[Company Enricher][2/6 회사명 근거] 공고 원문의 회사명 인용 대조
+[Company Enricher][2/6 회사명 근거] 그레이스앤파트너스(주): 확인 완료
+[Company Enricher][3/6 검색] 비용 절약 모드: 외부 기업 검색 생략
+[Company Enricher][6/6 완료] 원문 회사명만 유지, Verifier 계속 진행
+
+===== company_enricher_node =====
+[Verifier][근거] url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55319893 경력_원본='AI/LLM 기반 S/W 개발/(신입) - Mobility Startup 모집분야 AI/LLM 기반 S/W 개발/(신입) (0명)' 경력_확인='AI/LLM 기반 S/W 개발/(신입) - Mobility Startup 모집분야 AI/LLM 기반 S/W 개발/(신입) (0명)' 경력_위치=상세+외부 경력_파싱=0 경력_근거=minimum_years 마감='접수기간 : 2026-10-17 16시 ~ 2026-11-01 24시' 상태='D-5' 지원표시='D-5' 복수포지션=False
+[Verifier] 직무 판단: url=https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55319893, job_title='AI/LLM 기반 S/W 개발/(신입)', role_relation=related, role_evidence='AI/LLM 기반 S/W 개발/(신입)', 근거 등록=True
+[Verifier][최종] 판정=eligible, 최소경력=0, 경력근거=minimum_years, 이유=['모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다.']
+
+===== verifier_node =====
+{
+  "candidate_id": "653a59cc-518f-550d-ab68-b6d7cd345cd3",
+  "source_url": "https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55319893",
+  "decision": "eligible",
+  "reasons": [
+    "모집 상태·요구 경력·직무가 현재 검색 조건에 맞습니다."
+  ],
+  "closing_date": "2026-11-01",
+  "minimum_experience_years": 0,
+  "experience_basis": "minimum_years",
+  "evidence_ids": [
+    "a0907a49-e31a-5885-9db5-1b251e6aeaf1",
+    "3502649e-3ce6-5403-8ff7-125cefcc4117",
+    "9941a5d0-1cc2-557c-ad8d-dcbc28017b66",
+    "0f9d0e8b-b727-58ff-a780-4a340b8556c6",
+    "49c01469-7d30-51a0-b8c8-5980b5a342e0"
+  ]
+}
+[Lifecycle][비교] 기존 해시=v2:a8e72bdc36d2fcf84fa2e5bb1f6d5457b1cd947cb7c98f0b1beabc481e95179e, 새 해시=v2:a8e72bdc36d2fcf84fa2e5bb1f6d5457b1cd947cb7c98f0b1beabc481e95179e
+[Lifecycle] 이전=active, 다음=active, 변경=[], 검토=[], 기존값 보존=False; 기존 공고와 동일하며 현재 모집 근거가 있습니다.
+
+===== lifecycle_node =====
+{
+  "previous_status": "active",
+  "next_status": "active",
+  "transition_reason": "기존 공고와 동일하며 현재 모집 근거가 있습니다.",
+  "changed_fields": [],
+  "review_fields": [],
+  "should_publish": false,
+  "should_preserve_existing": false
+}
+[Job Persister] https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55319893: active, 버전=1
+
+===== job_persister_node =====
+저장 공고 ID: 84d21e6f-4caa-5cfb-91cf-20649c4f93a9
+
+===== candidate_iterator_node =====
+cursor: 30
+current: 없음 — 종료
+
+===== 단계별 처리 요약 =====
+검색 후보: 30건
+처리 후보: 30건 (목록 등에서 추가 발견 0건)
+페이지 접근 성공: 30건
+페이지 접근 실패: 0건
+개별 공고로 분류: 29건
+목록에서 상세 링크 발견: 0건
+페이지 유형 불명: 0건
+본문 추출 성공: 29건
+판정: eligible 14건 / excluded 6건 / review 10건
+공고 상태: active 27건 / changed 0건 / closed 0건 / unavailable 0건 / unknown 2건
+저장/기존 기록 확인: 27건
+
+===== 검증된 공고 요약 =====
+eligible: 14건
+  https://www.jobkorea.co.kr/Recruit/GI_Read/50090095
+  https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059
+  https://jumpit.saramin.co.kr/position/55226542
+  https://www.jobkorea.co.kr/Recruit/GI_Read/50074176
+  https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148
+  https://jumpit.saramin.co.kr/position/55328047
+  https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55249092
+  https://www.jobkorea.co.kr/Recruit/GI_Read/50142477
+  https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402
+  https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000147
+  https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059
+  https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662
+  https://jumpit.saramin.co.kr/position/55366656
+  https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55319893
+excluded: 6건
+review: 10건
+[Ranker] 사용자=user-001, 검증 입력=30건, 명시 조건 통과=18건, 프로필 버전=1
+[Feed Publisher] 사용자=user-001, 노출=18건 (검토=7건), 피드 버전=3
+
+===== 사용자 피드 (버전 3) =====
+1. [확인] 쿤텍 주식회사 — AI기반 가상머신개발AX(신입) (상대 점수 0.68)
+   https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55325059
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+2. [확인] 플라잎 — Physical AI Research Engineer (상대 점수 0.68)
+   https://jumpit.saramin.co.kr/position/55328047
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+3. [확인] 그레이스앤파트너스 — AI/LLM 기반 Software 개발 (상대 점수 0.68)
+   https://job.incruit.com/jobdb_info/jobpost.asp?job=2610100000148
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+4. [확인] 메가존클라우드㈜ — AI 전문 Engineer (상대 점수 0.68)
+   https://www.jobkorea.co.kr/Recruit/GI_Read/50142477
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+5. [검토 · 탐색] 삼일회계법인 — LLM/Data Engineer (상대 점수 0.52)
+   https://job.incruit.com/jobdb_info/jobpost.asp?job=2610030000014
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 검토 필요: 채용시 표시와 홈페이지 지원 버튼을 확인했습니다.; 경력 조건의 의미가 불분명합니다.
+6. [확인] VGen — FullStack AI Engineer (상대 점수 0.68)
+   https://jumpit.saramin.co.kr/position/55226542
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+7. [확인] (주)비상교육 — AI/ML 엔지니어 (상대 점수 0.68)
+   https://job.incruit.com/jobdb_info/jobpost.asp?job=2610200000059
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+8. [확인] ㈜인이지 — 데이터분석가/ AI엔지니어 (상대 점수 0.68)
+   https://www.jobkorea.co.kr/Recruit/GI_Read/50074176
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+9. [확인] (주)볼타온 — AI 개발자 (상대 점수 0.68)
+   https://job.incruit.com/jobdb_info/jobpost.asp?job=2610190005402
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+10. [확인] 올거나이즈코리아 — AI Native Back-end Engineer (상대 점수 0.68)
+   https://jumpit.saramin.co.kr/position/55366656
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+11. [확인] 이삭엔지니어링㈜ — AI 개발 연구원 (상대 점수 0.68)
+   https://www.jobkorea.co.kr/Recruit/GI_Read/50090095
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+12. [검토] (주)이우소프트 — AI Agent Engineer(LLM · TypeScript) [신입] (상대 점수 0.58)
+   https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55242853
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.; 검토 필요: 사람인 공고 제목의 D-10 표시를 확인했습니다.; 원문의 마감일 표기가 서로 충돌해 확인이 필요합니다.
+13. [확인] (주)인포매직스 — HW, 임베디드, SW 개발 엔지니어 (상대 점수 0.56)
+   https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=54914662
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 요구 경력을 확인했습니다.
+14. [검토] 이우소프트 — AI Agent Engineer(LLM · TypeScript) (상대 점수 0.52)
+   https://jumpit.saramin.co.kr/position/55242888
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 검토 필요: 경력 조건의 의미가 불분명합니다.
+15. [검토] 코드비전(주) — AI Research Engineer (Vision & NLP) (상대 점수 0.52)
+   https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55377393
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 검토 필요: 경력 조건의 의미가 불분명합니다.
+16. [검토] (주)딥오토 — AI Platform Engineer (상대 점수 0.52)
+   https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300900
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 검토 필요: 경력 조건의 의미가 불분명합니다.
+17. [검토] (주)딥오토 — AI Engineer (상대 점수 0.52)
+   https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55300868
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 검토 필요: 경력 조건의 의미가 불분명합니다.
+18. [검토] (주)제논 — GenOS AI Engineer (상대 점수 0.52)
+   https://www.saramin.co.kr/zf_user/jobs/view?rec_idx=55390190
+   이유: 직무명이 검색 직무와 관련됩니다.; 요청한 근무지역에 해당합니다.; 검토 필요: 경력 조건의 의미가 불분명합니다.; 원문의 마감일 표기가 서로 충돌해 확인이 필요합니다.
